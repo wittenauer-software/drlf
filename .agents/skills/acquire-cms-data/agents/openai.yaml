@@ -1,0 +1,4 @@
+interface:
+  display_name: "Acquire CMS Data"
+  short_description: "Capture bounded public CMS data reproducibly"
+  default_prompt: "Use $acquire-cms-data to plan and validate a bounded public CMS data acquisition."

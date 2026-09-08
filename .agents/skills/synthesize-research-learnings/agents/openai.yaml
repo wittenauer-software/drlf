@@ -1,0 +1,4 @@
+interface:
+  display_name: "Synthesize Research Learnings"
+  short_description: "Turn case experience into governed learning"
+  default_prompt: "Use $synthesize-research-learnings to reconcile this case retrospective into reusable knowledge."

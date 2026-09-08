@@ -1,0 +1,549 @@
+catalog_version: 1
+namespace: DRLF-FND
+origin: public-baseline
+reviewed_at: 2026-09-07
+records:
+  - id: DRLF-FND-PART-D-PROTOCOL-ATTRIBUTION
+    title: Resolve protocol-prescriber roles before clinical interpretation
+    status: maintained
+    type: data
+    confidence: high
+    scope:
+      programs: [Medicare Part D]
+      datasets: [Medicare Part D Prescribers]
+      populations: [published aggregate claims]
+    principle: >-
+      A prescriber NPI on a pharmacy-administered vaccine or drug record may represent a
+      patient-specific prescription, standing protocol, supervising provider, or authorized
+      administering provider. Resolve those roles before treating volume as personal encounters.
+    why_it_matters: >-
+      The prescriber field alone does not identify the dispenser, administration site, transaction
+      submitter, biller, or payment recipient.
+    authoritative_sources:
+      - https://member.ncpdp.org/Member/media/pdf/VersionDQuestions.pdf
+      - https://www.cms.gov/files/document/mln908764-medicare-part-d-vaccines.pdf
+      - https://data.cms.gov/resources/medicare-part-d-prescribers-methodology
+    synthetic_evidence: synthetic Part D protocol-attribution workflow
+    counterevidence_and_limits: >-
+      A protocol explanation is not presumed merely because volume is large; dated operational
+      evidence and nonpublic transaction fields may still be required.
+    failed_or_misleading_approaches: Treating every attributed claim as a personal visit.
+    reuse_guidance: Build a role matrix and effective-dated affiliation lanes before capacity analysis.
+    invalidation_triggers:
+      - A source release changes the definition or construction of the prescriber field.
+      - Transaction-level evidence establishes a different role for the records under review.
+
+  - id: DRLF-FND-PART-D-NATIONAL-DENOMINATOR
+    title: Use an appropriate unsuppressed total for Part D shares
+    status: maintained
+    type: method
+    confidence: high
+    scope:
+      programs: [Medicare Part D]
+      datasets: [Medicare Part D Prescribers]
+      populations: [published aggregate claims]
+    principle: >-
+      Use a CMS total that is constructed from the full underlying program data when measuring a
+      provider's national drug share; do not recreate that denominator by summing suppressed rows.
+    why_it_matters: Suppressed provider rows make a visible-row sum systematically incomplete.
+    authoritative_sources:
+      - https://data.cms.gov/resources/medicare-part-d-prescribers-methodology
+      - https://data.cms.gov/resources/medicare-part-d-prescribers-by-provider-data-dictionary
+      - https://data.cms.gov/resources/medicare-part-d-prescribers-by-geography-and-drug-data-dictionary
+    synthetic_evidence: synthetic suppressed-row denominator exercise
+    counterevidence_and_limits: >-
+      CMS summary products can have different populations, grains, and refresh schedules; a total is
+      usable only after those dimensions align with the numerator.
+    failed_or_misleading_approaches: Summing visible provider rows and labeling the result national.
+    reuse_guidance: Record numerator and denominator product, year, population, grain, and suppression.
+    invalidation_triggers:
+      - CMS changes suppression or the construction of a selected summary total.
+      - The numerator and denominator no longer describe the same drug, year, or population.
+
+  - id: DRLF-FND-EXPERIMENT-PART-D-INFRASTRUCTURE-SCREEN
+    title: Explore attribution infrastructure before clinical outliers
+    status: experimental
+    type: method
+    confidence: medium
+    scope:
+      programs: [Medicare Part D]
+      datasets: [Medicare Part D Prescribers]
+      populations: [published aggregate claims]
+    principle: >-
+      As a secondary routing experiment, look for abrupt attribution changes, multi-location scale,
+      vaccine-heavy concentration, and cross-product persistence that may indicate protocol or
+      network infrastructure.
+    why_it_matters: Operational attribution can dominate apparent individual prescriber volume.
+    authoritative_sources:
+      - https://member.ncpdp.org/Member/media/pdf/VersionDQuestions.pdf
+      - https://data.cms.gov/resources/medicare-part-d-prescribers-methodology
+    synthetic_evidence: synthetic attribution-reassignment time series
+    counterevidence_and_limits: >-
+      These features are not validated indicators of improper claims and may reflect ordinary
+      pharmacy operations, reporting changes, product launches, or network growth.
+    failed_or_misleading_approaches: Ranking infrastructure-like NPIs as clinical outliers without role review.
+    reuse_guidance: Keep this route labeled experimental and evaluate it separately from primary screens.
+    invalidation_triggers:
+      - Independent evaluation shows the route adds no decision-relevant discrimination.
+      - Source fields can no longer distinguish the features used by the route.
+
+  - id: DRLF-FND-GEOGRAPHY-POPULATION-CONTEXT
+    title: Use population only within established claim geography
+    status: maintained
+    type: method
+    confidence: high
+    scope:
+      programs: [U.S. healthcare claims]
+      datasets: [public provider aggregates, Census demographic products]
+      populations: [aggregate provider and geographic populations]
+    principle: >-
+      Treat an address or practice location as a source-specific assertion. Use local population as
+      context only when the data establish that beneficiaries, services, dispensing, or delivery
+      occurred in that geography.
+    why_it_matters: Provider address, beneficiary residence, service location, and payment geography differ.
+    authoritative_sources:
+      - https://api.census.gov/data/2024/acs/acs5/groups/B01001.html
+      - https://data.cms.gov/resources/medicare-part-d-prescribers-methodology
+    synthetic_evidence: synthetic address-versus-beneficiary-geography role matrix
+    counterevidence_and_limits: A local denominator may still be useful when a linked source establishes locality.
+    failed_or_misleading_approaches: Comparing national attributed volume directly with practice-city population.
+    reuse_guidance: Label every geography by source, subject, date, and denominator population.
+    invalidation_triggers:
+      - A linked claims source establishes the relevant beneficiary or service geography.
+      - The contextual population product changes its universe or estimate method.
+
+  - id: DRLF-FND-EFFECTIVE-DATED-AFFILIATIONS
+    title: Keep affiliation evidence in effective-dated source lanes
+    status: maintained
+    type: process
+    confidence: medium
+    scope:
+      programs: [U.S. healthcare claims]
+      datasets: [provider enrollment, licensing, organization records, provider directories]
+      populations: [providers and organizations]
+    principle: >-
+      Preserve each affiliation assertion in a separate lane with its source, observation date,
+      stated effective dates, entity identity, and the role that source can establish.
+    why_it_matters: A current profile does not prove an affiliation during an earlier claims year.
+    authoritative_sources:
+      - https://data.cms.gov/provider-characteristics/medicare-provider-supplier-enrollment/revalidation-reassignment-list
+      - https://data.cms.gov/resources/fee-for-service-public-provider-enrollment-methodology
+    synthetic_evidence: synthetic overlapping and conflicting affiliation timeline
+    counterevidence_and_limits: Public sources may omit contracts, termination dates, or historical versions.
+    failed_or_misleading_approaches: Blending current and historical assertions into one biography.
+    reuse_guidance: Report conflicts and gaps instead of selecting the most convenient source.
+    invalidation_triggers:
+      - A source supplies authoritative historical effective dates that resolve a lane.
+      - Entity resolution shows two assertions concern different people or organizations.
+
+  - id: DRLF-FND-TRANSACTION-ROLE-SEPARATION
+    title: Separate service, prescribing, dispensing, billing, and payment roles
+    status: maintained
+    type: data
+    confidence: high
+    scope:
+      programs: [Medicare Part B, Medicare Part D, Medicare DMEPOS]
+      datasets: [public claims aggregates]
+      populations: [providers, suppliers, pharmacies, organizations]
+    principle: >-
+      Model rendering, ordering, prescribing, protocol, administering, dispensing, service-location,
+      transaction-submitter, billing, and payment-recipient roles separately unless a source
+      explicitly equates them.
+    why_it_matters: Published attribution and dollar fields do not necessarily identify who performed or received funds.
+    authoritative_sources:
+      - https://bluebutton.cms.gov/resources/variables/srvc_prvdr_id/
+      - https://member.ncpdp.org/Member/media/pdf/VersionDQuestions.pdf
+      - https://www.cms.gov/files/document/mln908764-medicare-part-d-vaccines.pdf
+    synthetic_evidence: synthetic operational-role matrix with unresolved lanes
+    counterevidence_and_limits: Some source products deliberately aggregate several operational actors.
+    failed_or_misleading_approaches: Calling total drug cost provider revenue or attributing every role to one NPI.
+    reuse_guidance: State what each field establishes, what it does not, and which nonpublic record resolves the gap.
+    invalidation_triggers:
+      - Source documentation explicitly changes a role or monetary-field definition.
+      - Transaction-level records establish actor and payee identities.
+
+  - id: DRLF-FND-DECISION-RELEVANT-STOPPING
+    title: Stop case research when bounded public actions cannot change disposition
+    status: maintained
+    type: process
+    confidence: high
+    scope:
+      programs: [U.S. healthcare claims]
+      datasets: [public aggregate and contextual sources]
+      populations: [research candidates]
+    principle: >-
+      Continue case-specific public work only for a lawful, accessible, bounded action with declared
+      outcomes that can change a triage lane or disposition. Otherwise disposition the case and move
+      general tooling to a separate backlog.
+    why_it_matters: Public aggregates often reach a ceiling before falsity, necessity, delivery, intent, or payment can be resolved.
+    authoritative_sources:
+      - https://data.cms.gov/resources/medicare-part-d-prescribers-methodology
+      - https://data.cms.gov/resources/medicare-physician-other-practitioners-methodology
+    synthetic_evidence: synthetic two-action no-change cutoff exercise
+    counterevidence_and_limits: A newly available source may create a bounded decision-changing action later.
+    failed_or_misleading_approaches: Accumulating more searches because a case remains interesting.
+    reuse_guidance: Record the precise reopen trigger and nonpublic evidence need before closing.
+    invalidation_triggers:
+      - A new lawful public source can distinguish the remaining explanations.
+      - A material methodological error invalidates the current disposition.
+
+  - id: DRLF-FND-PART-B-ALIGNED-REACH-REPEAT
+    title: Align Part B service reach and repeat measures
+    status: maintained
+    type: method
+    confidence: medium
+    scope:
+      programs: [Medicare Part B]
+      datasets: [Medicare Physician and Other Practitioners]
+      populations: [fee-for-service provider aggregates]
+    principle: >-
+      Compare exact year, HCPCS, place-of-service, specialty, entity, and aligned provider-panel
+      denominators. Keep service reach, services per beneficiary, and payment as distinct measures.
+    why_it_matters: A high service count can reflect a large panel, frequent repeat use, or both.
+    authoritative_sources:
+      - https://data.cms.gov/resources/medicare-physician-other-practitioners-methodology
+      - https://data.cms.gov/resources/medicare-physician-other-practitioners-by-provider-data-dictionary
+      - https://data.cms.gov/resources/medicare-physician-other-practitioners-by-provider-and-service-data-dictionary
+    synthetic_evidence: synthetic Part B aligned-denominator screen
+    counterevidence_and_limits: Public annual aggregates cannot decide medical necessity for an individual service.
+    failed_or_misleading_approaches: Ranking raw counts across different specialties or places of service.
+    reuse_guidance: Publish denominator provenance, suppression, peer size, and scoreability with every result.
+    invalidation_triggers:
+      - CMS changes field definitions or source population.
+      - The selected provider denominator is not aligned with the service rows.
+
+  - id: DRLF-FND-EXPERIMENT-PART-B-MULTICODE-REACH
+    title: Treat persistent multi-code reach as a secondary experiment
+    status: experimental
+    type: method
+    confidence: low
+    scope:
+      programs: [Medicare Part B]
+      datasets: [Medicare Physician and Other Practitioners]
+      populations: [fee-for-service provider aggregates]
+    principle: >-
+      A separately labeled secondary screen may examine sustained high reach across several related
+      services after the primary exact-cell analysis and thresholds have been frozen.
+    why_it_matters: A multi-service pattern can prioritize context review without replacing exact-code evidence.
+    authoritative_sources:
+      - https://data.cms.gov/resources/medicare-physician-other-practitioners-methodology
+      - https://data.cms.gov/resources/medicare-physician-other-practitioners-by-provider-and-service-data-dictionary
+    synthetic_evidence: synthetic multi-year multi-code routing exercise
+    counterevidence_and_limits: Correlated services, referral mix, specialty focus, and panel composition can create the pattern.
+    failed_or_misleading_approaches: Presenting exploratory route membership as a fraud score.
+    reuse_guidance: Freeze inputs before identity reveal and report complete output as well as shortlist membership.
+    invalidation_triggers:
+      - Independent held-out evaluation shows unstable or non-discriminating behavior.
+      - Code or policy changes make cross-year comparison invalid.
+
+  - id: DRLF-FND-DMEPOS-UNIT-AND-PEER-SEMANTICS
+    title: Resolve DMEPOS units, rental state, and exact peers
+    status: maintained
+    type: method
+    confidence: high
+    scope:
+      programs: [Medicare DMEPOS]
+      datasets: [DMEPOS by Supplier and Service]
+      populations: [fee-for-service supplier aggregates]
+    principle: >-
+      Establish the HCPCS unit definition and compare exact year, code, rental indicator, and entity
+      type cells before making operational inferences from claims, services, or dollars.
+    why_it_matters: Service units are product-specific and rental stages can change expected frequency and payment.
+    authoritative_sources:
+      - https://data.cms.gov/resources/medicare-durable-medical-equipment-devices-supplies-methodology
+      - https://data.cms.gov/resources/medicare-durable-medical-equipment-devices-supplies-by-supplier-and-service-data-dictionary
+      - https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-414/subpart-D/section-414.229
+    synthetic_evidence: synthetic exact-cell DMEPOS peer exercise
+    counterevidence_and_limits: Published aggregates omit modifiers, orders, delivery proof, and beneficiary overlap.
+    failed_or_misleading_approaches: Comparing unit intensity across unlike products or rental states.
+    reuse_guidance: Retain unknown-beneficiary and insufficient-peer cells as descriptive, not zero or scoreable.
+    invalidation_triggers:
+      - HCPCS, rental, or source-field definitions change.
+      - A selected peer grain combines materially different service semantics.
+
+  - id: DRLF-FND-DMEPOS-COMPONENT-COVERAGE
+    title: Separate selected-component coverage from category dominance
+    status: maintained
+    type: data
+    confidence: high
+    scope:
+      programs: [Medicare DMEPOS]
+      datasets: [DMEPOS by Supplier, DMEPOS by Supplier and Service]
+      populations: [fee-for-service supplier aggregates]
+    principle: >-
+      A selected product set can explain a supplier total without establishing dominance in the
+      broader category. State the numerator, denominator, visible scope, and residual separately.
+    why_it_matters: Decomposition coverage and market share answer different questions.
+    authoritative_sources:
+      - https://data.cms.gov/resources/medicare-durable-medical-equipment-devices-supplies-methodology
+      - https://data.cms.gov/resources/medicare-durable-medical-equipment-devices-supplies-by-supplier-data-dictionary
+    synthetic_evidence: synthetic supplier summary-to-component reconciliation
+    counterevidence_and_limits: Suppression and unselected products can leave an unknown residual.
+    failed_or_misleading_approaches: Calling a high within-supplier component share a national category share.
+    reuse_guidance: Publish coverage ratios, visible-only qualifiers, and the unrepresented residual.
+    invalidation_triggers:
+      - A complete compatible category denominator becomes available.
+      - Summary and component products no longer share a compatible population.
+
+  - id: DRLF-FND-PROVIDER-STATUS-SNAPSHOT
+    title: Treat provider-status files as point-in-time observations
+    status: maintained
+    type: data
+    confidence: high
+    scope:
+      programs: [Medicare provider enrollment and enforcement]
+      datasets: [public enrollment, revocation, and exclusion files]
+      populations: [published providers and suppliers]
+    principle: >-
+      Preserve the exact source release, observation date, inclusion rules, and effective-date fields.
+      Presence or absence in a current file does not establish status for an earlier claims period.
+    why_it_matters: Current snapshots, action lists, and historical claims use different time semantics.
+    authoritative_sources:
+      - https://data.cms.gov/resources/fee-for-service-public-provider-enrollment-methodology
+      - https://data.cms.gov/provider-characteristics/medicare-provider-supplier-enrollment/revoked-medicare-providers-and-suppliers
+      - https://www.oig.hhs.gov/exclusions/leie-database-supplement-downloads/
+    synthetic_evidence: synthetic changing-snapshot provider-status exercise
+    counterevidence_and_limits: An effective date can narrow timing but may not allocate annual claims around the event.
+    failed_or_misleading_approaches: Treating no current match as historical clearance or present eligibility.
+    reuse_guidance: Report exactly what was searched, in which snapshot, and what result was absent or present.
+    invalidation_triggers:
+      - A longitudinal authoritative history replaces the snapshot for the question.
+      - Source inclusion or refresh rules change.
+
+  - id: DRLF-FND-DMEPOS-MATERIAL-CELL-COMPLETENESS
+    title: Separate portfolio completeness from material-cell completeness
+    status: maintained
+    type: method
+    confidence: high
+    scope:
+      programs: [Medicare DMEPOS]
+      datasets: [DMEPOS by Supplier and Service]
+      populations: [fee-for-service supplier aggregates]
+    principle: >-
+      A code set selected to cover a portfolio share is descriptive. A material-cell completeness
+      claim requires a prospectively frozen nonnegative measure and threshold proving that an
+      excluded aggregate cannot contain a qualifying constituent.
+    why_it_matters: Top-code coverage does not guarantee that every independently material cell was acquired.
+    authoritative_sources:
+      - https://data.cms.gov/resources/medicare-durable-medical-equipment-devices-supplies-methodology
+      - https://data.cms.gov/resources/medicare-durable-medical-equipment-devices-supplies-by-supplier-and-service-data-dictionary
+    synthetic_evidence: property test over nonnegative candidate-code and rental cells
+    counterevidence_and_limits: The proof fails for signed values, incompatible grains, incomplete input, or changed thresholds.
+    failed_or_misleading_approaches: Calling a high cumulative coverage code list complete for all anomaly routes.
+    reuse_guidance: Record the exact measure, threshold, grain, nesting proof, and failure conditions.
+    invalidation_triggers:
+      - Inputs can be negative, incomplete, or differently grained.
+      - The downstream materiality threshold or qualification measure changes.
+
+  - id: DRLF-FND-FROZEN-HELD-OUT-EVALUATION
+    title: Freeze analysis before held-out identity evaluation
+    status: maintained
+    type: engineering
+    confidence: high
+    scope:
+      programs: [U.S. healthcare claims]
+      datasets: [aggregate screening outputs]
+      populations: [synthetic or authorized evaluation cohorts]
+    principle: >-
+      Preserve the complete output and configuration before revealing a held-out identity; classify
+      the later identity as absent, visible-only, or shortlisted without changing the primary route.
+    why_it_matters: Post-reveal tuning turns evaluation into a new exploratory analysis.
+    authoritative_sources:
+      - https://airc.nist.gov/airmf-resources/airmf/5-sec-core/
+    synthetic_evidence: synthetic three-state identity-reveal test
+    counterevidence_and_limits: A held-out identity is not ground truth and cannot alone estimate detector quality.
+    failed_or_misleading_approaches: Retuning thresholds after seeing whether a familiar identity appears.
+    reuse_guidance: Store complete output, shortlist, run manifest, and input hash as separate artifacts.
+    invalidation_triggers:
+      - The frozen input or configuration changes.
+      - Evaluation objectives or cohort construction materially change.
+
+  - id: DRLF-FND-DETERMINISTIC-SHORTLISTS
+    title: Generate shortlists deterministically from declared routes
+    status: maintained
+    type: engineering
+    confidence: high
+    scope:
+      programs: [U.S. healthcare claims]
+      datasets: [aggregate screening outputs]
+      populations: [research candidates]
+    principle: >-
+      Derive shortlist membership and order mechanically from versioned route fields, stable tie
+      rules, and complete inputs. Retain a reason for every selected row.
+    why_it_matters: Hand curation hides omissions, identity bias, and irreproducible selection.
+    authoritative_sources:
+      - https://airc.nist.gov/airmf-resources/airmf/5-sec-core/
+    synthetic_evidence: repeated byte-stable selection test with ties
+    counterevidence_and_limits: Determinism does not make route logic valid or fair.
+    failed_or_misleading_approaches: Manually adding or removing candidates without a separately labeled review action.
+    reuse_guidance: Version route semantics and preserve both full output and shortlist.
+    invalidation_triggers:
+      - Sort, tie, or qualification semantics change without an algorithm version.
+      - The input is incomplete or mutable.
+
+  - id: DRLF-FND-CENSORED-AND-UNSCOREABLE-CELLS
+    title: Preserve censored and visible-but-unscoreable cells
+    status: maintained
+    type: engineering
+    confidence: high
+    scope:
+      programs: [Medicare Part B, Medicare Part D, Medicare DMEPOS]
+      datasets: [public aggregate claims products]
+      populations: [published aggregate cells]
+    principle: >-
+      Represent suppression as censored unknown, not zero. Retain visible rows that lack a usable
+      denominator or peer floor as descriptive with an explicit unscoreable reason.
+    why_it_matters: Zero-filling or dropping these rows changes distributions and conceals evidence limits.
+    authoritative_sources:
+      - https://data.cms.gov/resources/medicare-part-d-prescribers-methodology
+      - https://data.cms.gov/resources/medicare-physician-other-practitioners-methodology
+      - https://data.cms.gov/resources/medicare-durable-medical-equipment-devices-supplies-methodology
+    synthetic_evidence: synthetic suppression and peer-floor fixtures
+    counterevidence_and_limits: Dataset-specific suppression and counter-suppression rules must be reobserved each release.
+    failed_or_misleading_approaches: Converting blank suppressed values to zero or excluding them without status.
+    reuse_guidance: Carry an evaluation status and source suppression semantics through every transform.
+    invalidation_triggers:
+      - Source suppression or missing-value semantics change.
+      - A previously unavailable denominator becomes available and validated.
+
+  - id: DRLF-FND-BOUNDED-API-UNION
+    title: Reconcile bounded API batches to a frozen union
+    status: maintained
+    type: engineering
+    confidence: high
+    scope:
+      programs: [public healthcare data acquisition]
+      datasets: [paged public APIs]
+      populations: [aggregate public records]
+    principle: >-
+      Freeze the exact target keys before batching. Require disjoint batch contracts and reconcile
+      page, row, key, byte, and hash totals against the declared union before acceptance.
+    why_it_matters: Batching can silently create gaps, overlap, duplicate pages, or partial outputs.
+    authoritative_sources:
+      - https://data.cms.gov/api-docs
+    synthetic_evidence: local paged-response fixture with duplicate, overlap, and omission failures
+    counterevidence_and_limits: Provider APIs may expose different pagination and consistency guarantees.
+    failed_or_misleading_approaches: Concatenating successful batch files without union reconciliation.
+    reuse_guidance: Bound pages, rows, bytes, retries, workers, and outputs; retain resumable checkpoints when supported.
+    invalidation_triggers:
+      - API pagination or query semantics change.
+      - Target keys or release identity change after freeze.
+
+  - id: DRLF-FND-POSTGRES-IDENTIFIER-SAFETY
+    title: Validate PostgreSQL output identifiers before execution
+    status: maintained
+    type: engineering
+    confidence: high
+    scope:
+      programs: [DRLF data engineering]
+      datasets: [PostgreSQL query outputs]
+      populations: [not applicable]
+    principle: >-
+      Enforce the supported PostgreSQL identifier byte limit and output-name uniqueness before
+      execution, then verify actual output headers at runtime.
+    why_it_matters: PostgreSQL can truncate long identifiers and create collisions that break output contracts.
+    authoritative_sources:
+      - https://www.postgresql.org/docs/current/sql-syntax-lexical.html
+    synthetic_evidence: ASCII, multibyte, and truncation-collision regression tests
+    counterevidence_and_limits: A PostgreSQL build may change NAMEDATALEN; support policy must state the assumed build.
+    failed_or_misleading_approaches: Counting characters instead of encoded bytes or trusting aliases after truncation.
+    reuse_guidance: Validate static aliases and compare result-column names with the registered schema.
+    invalidation_triggers:
+      - Supported PostgreSQL builds use a different identifier limit.
+      - Output schema or encoding changes.
+
+  - id: DRLF-FND-ROBUST-SCALE-TOLERANCE
+    title: Treat negligible robust-scale residue as degenerate
+    status: maintained
+    type: engineering
+    confidence: medium
+    scope:
+      programs: [claims anomaly analysis]
+      datasets: [numeric peer distributions]
+      populations: [aggregate peer cells]
+    principle: >-
+      Define and version a scale-relative floating tolerance before deciding whether MAD or IQR is
+      usable. Publish a degenerate-scale status and null score when neither scale materially exceeds it.
+    why_it_matters: Tiny numeric residue in tied groups can generate enormous, meaningless robust scores.
+    authoritative_sources:
+      - https://docs.python.org/3/library/math.html#math.isclose
+      - https://www.postgresql.org/docs/current/functions-aggregate.html
+    synthetic_evidence: tied, singleton, near-zero, and material-scale cross-implementation fixtures
+    counterevidence_and_limits: No universal tolerance fits every numeric type or data scale.
+    failed_or_misleading_approaches: Treating every nonzero floating result as a meaningful peer scale.
+    reuse_guidance: Justify the tolerance, sensitivity-test it, and version any change to routing behavior.
+    invalidation_triggers:
+      - Numeric representation or percentile implementation changes.
+      - Sensitivity tests show material route instability.
+
+  - id: DRLF-FND-CANONICAL-MANIFEST-BYTES
+    title: Serialize hash-bearing manifests canonically
+    status: maintained
+    type: engineering
+    confidence: high
+    scope:
+      programs: [DRLF reproducibility]
+      datasets: [source and run manifests]
+      populations: [not applicable]
+    principle: >-
+      Declare encoding, key ordering, separators, and LF termination for hash-bearing manifests, and
+      test the exact bytes rather than relying on platform defaults.
+    why_it_matters: Semantically identical documents can hash differently across serializers and line-ending policies.
+    authoritative_sources:
+      - https://git-scm.com/docs/gitattributes.html
+      - https://www.rfc-editor.org/rfc/rfc8785
+    synthetic_evidence: golden UTF-8 and LF manifest-byte test on the supported platform
+    counterevidence_and_limits: Canonical JSON rules do not automatically canonicalize YAML or arbitrary floats.
+    failed_or_misleading_approaches: Hashing platform-default pretty-printed output.
+    reuse_guidance: Put canonicalization rules in the manifest contract and reject noncanonical bytes.
+    invalidation_triggers:
+      - Serializer, encoding, or canonicalization profile changes.
+      - A new supported platform produces different bytes.
+
+  - id: DRLF-FND-BOUNDED-QUERY-PLAN-REVIEW
+    title: Bound query execution and review adverse plans
+    status: maintained
+    type: engineering
+    confidence: high
+    scope:
+      programs: [DRLF data engineering]
+      datasets: [PostgreSQL claims tables]
+      populations: [aggregate claims rows]
+    principle: >-
+      Apply session-scoped runtime and output limits. When a logically narrow query stalls, inspect
+      its plan and use a reproducible intermediate or suitable join strategy within the declared envelope.
+    why_it_matters: A small logical result can still trigger an expensive nested-loop or repeated aggregate plan.
+    authoritative_sources:
+      - https://www.postgresql.org/docs/current/using-explain.html
+      - https://www.postgresql.org/docs/current/runtime-config-client.html
+    synthetic_evidence: bounded adverse-plan fixture with explicit timeout behavior
+    counterevidence_and_limits: Planner decisions vary with versions, statistics, indexes, and data distribution.
+    failed_or_misleading_approaches: Letting an unbounded query saturate the workstation because expected output is small.
+    reuse_guidance: Record plan evidence, caps, intermediate lineage, and incomplete status on termination.
+    invalidation_triggers:
+      - Supported PostgreSQL versions or planner behavior materially change.
+      - The data scale exceeds the reviewed resource envelope.
+
+  - id: DRLF-FND-NEGATIVE-STATUS-SEARCH-LIMIT
+    title: Limit conclusions from a negative current-status search
+    status: maintained
+    type: engineering
+    confidence: high
+    scope:
+      programs: [Medicare enrollment and federal exclusions]
+      datasets: [current provider enrollment, revocation, and exclusion files]
+      populations: [published providers and suppliers]
+    principle: >-
+      Record a negative search as no matching row in the named source, release, query, and observation
+      time. Do not convert it into historical clearance, current eligibility, or claim validity.
+    why_it_matters: Current files have inclusion, reinstatement, replacement, and publication-lag rules.
+    authoritative_sources:
+      - https://www.oig.hhs.gov/exclusions/leie-database-supplement-downloads/
+      - https://data.cms.gov/resources/fee-for-service-public-provider-enrollment-methodology
+    synthetic_evidence: synthetic empty response followed by a changed snapshot
+    counterevidence_and_limits: A positive match also requires identity resolution and effective-date interpretation.
+    failed_or_misleading_approaches: Reporting no current match as no historical action.
+    reuse_guidance: Preserve source version, exact query, observation time, and missing identifiers.
+    invalidation_triggers:
+      - A complete historical source becomes authoritative for the period.
+      - The current source changes its inclusion or replacement policy.

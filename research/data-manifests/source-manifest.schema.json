@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/wittenauer-software/drlf/research/data-manifests/source-manifest.schema.json",
+  "title": "Healthcare research source manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_version",
+    "status",
+    "source",
+    "dataset",
+    "observation",
+    "documentation",
+    "terms",
+    "retrieval",
+    "files",
+    "semantics",
+    "validation"
+  ],
+  "properties": {
+    "manifest_version": { "const": 2 },
+    "status": { "enum": ["draft", "complete"] },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "type", "homepage"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "type": {
+          "enum": ["CMS", "Census", "NPPES", "drug", "code-system", "policy", "other"]
+        },
+        "homepage": { "type": ["string", "null"], "format": "uri" }
+      }
+    },
+    "dataset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "slug",
+        "dataset_id",
+        "version_id",
+        "data_year",
+        "population",
+        "aggregation_keys"
+      ],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "dataset_id": { "type": ["string", "null"] },
+        "version_id": { "type": ["string", "null"] },
+        "data_year": { "type": ["integer", "null"], "minimum": 1900, "maximum": 2200 },
+        "population": { "type": "string" },
+        "aggregation_keys": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        }
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["published_at", "modified_at", "observed_at", "accessed_at"],
+      "properties": {
+        "published_at": { "type": ["string", "null"], "format": "date" },
+        "modified_at": {
+          "anyOf": [
+            { "type": "null" },
+            { "type": "string", "format": "date" },
+            { "type": "string", "format": "date-time" }
+          ]
+        },
+        "observed_at": { "type": "string", "format": "date-time" },
+        "accessed_at": { "type": "string", "format": "date" }
+      }
+    },
+    "documentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["landing_page", "methodology", "data_dictionary", "snapshots"],
+      "properties": {
+        "landing_page": { "type": ["string", "null"], "format": "uri" },
+        "methodology": { "type": ["string", "null"], "format": "uri" },
+        "data_dictionary": { "type": ["string", "null"], "format": "uri" },
+        "snapshots": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        }
+      }
+    },
+    "terms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["license_name", "license_url", "access_restrictions", "public_use_verified"],
+      "properties": {
+        "license_name": { "type": ["string", "null"] },
+        "license_url": { "type": ["string", "null"], "format": "uri" },
+        "access_restrictions": { "type": "string" },
+        "public_use_verified": { "type": "boolean" }
+      }
+    },
+    "retrieval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "request_url", "parameters", "query"],
+      "properties": {
+        "method": { "enum": ["download", "api", "export", "other"] },
+        "request_url": { "type": ["string", "null"], "format": "uri" },
+        "parameters": { "type": "object" },
+        "query": { "type": ["string", "null"] }
+      }
+    },
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "relative_path",
+          "filename",
+          "role",
+          "bytes",
+          "sha256",
+          "media_type",
+          "compression",
+          "schema_fingerprint"
+        ],
+        "properties": {
+          "relative_path": { "type": "string", "pattern": "^data/raw/" },
+          "filename": { "type": "string", "minLength": 1 },
+          "role": { "type": "string", "minLength": 1 },
+          "bytes": { "type": ["integer", "null"], "minimum": 0 },
+          "sha256": {
+            "type": ["string", "null"],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "media_type": { "type": ["string", "null"], "minLength": 1 },
+          "compression": { "type": ["string", "null"] },
+          "schema_fingerprint": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["monetary_fields", "utilization_fields", "suppression", "exclusions"],
+      "properties": {
+        "monetary_fields": { "type": "object" },
+        "utilization_fields": { "type": "object" },
+        "suppression": { "type": "string" },
+        "exclusions": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rows", "columns", "aggregation_key_duplicates", "notes"],
+      "properties": {
+        "rows": { "type": ["integer", "null"], "minimum": 0 },
+        "columns": { "type": ["integer", "null"], "minimum": 0 },
+        "aggregation_key_duplicates": { "type": ["integer", "null"], "minimum": 0 },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "status": { "const": "complete" } },
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "terms": {
+            "properties": {
+              "public_use_verified": { "const": true }
+            }
+          },
+          "retrieval": {
+            "properties": {
+              "request_url": { "type": "string", "format": "uri", "minLength": 1 }
+            }
+          },
+          "files": {
+            "items": {
+              "properties": {
+                "bytes": { "type": "integer", "minimum": 0 },
+                "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+                "media_type": { "type": "string", "minLength": 1 }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

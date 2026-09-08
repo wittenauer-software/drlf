@@ -1,0 +1,4 @@
+interface:
+  display_name: "Investigate DMEPOS Outliers"
+  short_description: "Analyze exact-cell DMEPOS supplier patterns"
+  default_prompt: "Use $investigate-dmepos-supplier-outliers to evaluate this DMEPOS supplier pattern."

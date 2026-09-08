@@ -1,0 +1,387 @@
+schema_version: 1
+suite_id: offline-research-workflow-suite-v1
+synthetic_record: true
+notice: >-
+  Invented teaching records only. No value represents a real person, organization, provider,
+  beneficiary, claim, payment, license, enrollment record, or allegation.
+
+bounded_acquisition:
+  source: SYNTHETIC-SOURCE-BOUNDED-API
+  bounds:
+    max_pages: 3
+    max_total_bytes: 1024
+    max_records: 5
+    max_retries_per_page: 1
+  pages:
+    - cursor: SYNTHETIC-CURSOR-START
+      next_cursor: SYNTHETIC-CURSOR-TWO
+      response_bytes: 240
+      retries: 1
+      record_ids:
+        - SYNTHETIC-RECORD-ONE
+        - SYNTHETIC-RECORD-TWO
+    - cursor: SYNTHETIC-CURSOR-TWO
+      next_cursor: null
+      response_bytes: 180
+      retries: 0
+      record_ids:
+        - SYNTHETIC-RECORD-THREE
+
+part_d_protocol_attribution:
+  product: SYNTHETIC-PRODUCT-VACCINE
+  attributed_prescriber: SYNTHETIC-PRESCRIBER-PROTOCOL
+  population: invented-drug-benefit-enrollees
+  aggregate_stage:
+    role_state:
+      attributed_prescriber_field: SYNTHETIC-PRESCRIBER-PROTOCOL
+      patient_specific_prescriber: unknown
+      protocol_or_standing_order_provider: unknown
+      supervising_provider: unknown
+      administrator: unknown
+      dispenser: unknown
+      pharmacy_location: unknown
+      transaction_submitter: unknown
+      biller: unknown
+      plan: unknown
+      payment_recipient: unknown
+    yearly_attribution:
+      - year: 2097
+        claims: 18
+        beneficiaries: 16
+        fills: 18
+        total_drug_cost: 360.00
+      - year: 2098
+        claims: 24
+        beneficiaries: 21
+        fills: 24
+        total_drug_cost: 480.00
+      - year: 2099
+        claims: 180
+        beneficiaries: 150
+        fills: 180
+        total_drug_cost: 3600.00
+    compatible_national_totals:
+      - year: 2097
+        claims: 900
+        population: invented-drug-benefit-enrollees
+        product: SYNTHETIC-PRODUCT-VACCINE
+        includes_suppressed_underlying_rows: true
+      - year: 2098
+        claims: 960
+        population: invented-drug-benefit-enrollees
+        product: SYNTHETIC-PRODUCT-VACCINE
+        includes_suppressed_underlying_rows: true
+      - year: 2099
+        claims: 1000
+        population: invented-drug-benefit-enrollees
+        product: SYNTHETIC-PRODUCT-VACCINE
+        includes_suppressed_underlying_rows: true
+    latest_visible_provider_rows:
+      year: 2099
+      product: SYNTHETIC-PRODUCT-VACCINE
+      population: invented-drug-benefit-enrollees
+      suppressed_rows_present: true
+      rows:
+        - prescriber: SYNTHETIC-PRESCRIBER-PROTOCOL
+          claims: 180
+        - prescriber: SYNTHETIC-PART-D-PEER-ONE
+          claims: 52
+        - prescriber: SYNTHETIC-PART-D-PEER-TWO
+          claims: 44
+        - prescriber: SYNTHETIC-PART-D-PEER-THREE
+          claims: 36
+    latest_exact_product_peers:
+      year: 2099
+      product: SYNTHETIC-PRODUCT-VACCINE
+      population: invented-drug-benefit-enrollees
+      rows:
+        - prescriber: SYNTHETIC-PART-D-PEER-ONE
+          claims: 52
+          beneficiaries: 48
+          fills: 52
+        - prescriber: SYNTHETIC-PART-D-PEER-TWO
+          claims: 44
+          beneficiaries: 40
+          fills: 44
+        - prescriber: SYNTHETIC-PART-D-PEER-THREE
+          claims: 36
+          beneficiaries: 34
+          fills: 36
+    reassignment_series:
+      - year: 2097
+        prior_prescriber: SYNTHETIC-PRESCRIBER-LEGACY
+        prior_claims: 150
+        attributed_prescriber_claims: 18
+      - year: 2098
+        prior_prescriber: SYNTHETIC-PRESCRIBER-LEGACY
+        prior_claims: 156
+        attributed_prescriber_claims: 24
+      - year: 2099
+        prior_prescriber: SYNTHETIC-PRESCRIBER-LEGACY
+        prior_claims: 8
+        attributed_prescriber_claims: 180
+  resolved_stage_role_assignments:
+    - role: prescriber
+      actor: SYNTHETIC-PRESCRIBER-PROTOCOL
+      basis: standing-order-protocol
+    - role: dispenser
+      actor: SYNTHETIC-PHARMACY-NORTH
+      basis: synthetic-dispensing-record
+    - role: dispenser
+      actor: SYNTHETIC-PHARMACY-SOUTH
+      basis: synthetic-dispensing-record
+    - role: administrator
+      actor: SYNTHETIC-PHARMACY-NORTH
+      basis: synthetic-administration-record
+    - role: administrator
+      actor: SYNTHETIC-PHARMACY-SOUTH
+      basis: synthetic-administration-record
+    - role: biller
+      actor: SYNTHETIC-PHARMACY-NORTH
+      basis: synthetic-transaction-record
+    - role: biller
+      actor: SYNTHETIC-PHARMACY-SOUTH
+      basis: synthetic-transaction-record
+    - role: payment-recipient
+      actor: SYNTHETIC-PHARMACY-NORTH
+      basis: synthetic-remittance-record
+    - role: payment-recipient
+      actor: SYNTHETIC-PHARMACY-SOUTH
+      basis: synthetic-remittance-record
+  required_nonpublic_evidence:
+    - patient-specific transaction prescriber field
+    - dispensing-pharmacy identifier
+    - protocol agreement effective dates
+    - remittance recipient
+
+operational_context:
+  geographies:
+    prescriber_address_state: ZZ
+    service_location: unknown
+    beneficiary_residence: unknown
+  money:
+    aggregate_total_drug_cost: 3600.00
+    pharmacy_remittance: unknown
+    paid_to_prescriber: unknown
+  affiliation_lanes:
+    - lane: professional-license
+      actor: SYNTHETIC-PRESCRIBER-PROTOCOL
+      source: SYNTHETIC-SOURCE-LICENSE
+      effective_start: "2098-01-01"
+      effective_end: "2100-12-31"
+      observed_at: "2099-04-15"
+    - lane: protocol-agreement
+      actor: SYNTHETIC-PRESCRIBER-PROTOCOL
+      source: SYNTHETIC-SOURCE-PROTOCOL
+      effective_start: "2099-01-01"
+      effective_end: "2099-12-31"
+      observed_at: "2099-04-16"
+    - lane: organization-roster
+      actor: SYNTHETIC-PHARMACY-NORTH
+      source: SYNTHETIC-SOURCE-ROSTER
+      effective_start: "2099-03-01"
+      effective_end: "2099-09-30"
+      observed_at: "2099-04-17"
+
+dmepos_provider_status:
+  supplier_summary_total_payment: 1000.00
+  coverage_floor: 0.80
+  dominance_floor: 0.75
+  minimum_peer_count: 3
+  visible_components:
+    respiratory: 810.00
+    mobility: 90.00
+  product:
+    code: SYNTHETIC-HCPCS-RENTAL
+    billing_unit: monthly-rental-unit
+  candidate_cell:
+    supplier: SYNTHETIC-DME-SUPPLIER
+    year: 2099
+    code: SYNTHETIC-HCPCS-RENTAL
+    rental_indicator: true
+    entity_type: organization
+    units: 120
+    beneficiaries: 20
+  peer_cells:
+    - supplier: SYNTHETIC-DME-PEER-ONE
+      year: 2099
+      code: SYNTHETIC-HCPCS-RENTAL
+      rental_indicator: true
+      entity_type: organization
+      units: 60
+      beneficiaries: 10
+    - supplier: SYNTHETIC-DME-PEER-TWO
+      year: 2099
+      code: SYNTHETIC-HCPCS-RENTAL
+      rental_indicator: true
+      entity_type: organization
+      units: 72
+      beneficiaries: 12
+    - supplier: SYNTHETIC-DME-PEER-THREE
+      year: 2099
+      code: SYNTHETIC-HCPCS-RENTAL
+      rental_indicator: true
+      entity_type: organization
+      units: 84
+      beneficiaries: 14
+  provider_status_observations:
+    - source: SYNTHETIC-SOURCE-PROVIDER-STATUS
+      as_of: "2099-02-01"
+      status: present-in-snapshot
+    - source: SYNTHETIC-SOURCE-PROVIDER-STATUS
+      as_of: "2099-08-01"
+      status: absent-from-snapshot
+
+case_lifecycle:
+  case_id: SYNTHETIC-CASE-ALPHA
+  question: >-
+    Does the aggregate attribution more plausibly represent a protocol role than individual visits?
+  stages:
+    - intake
+    - context-review
+    - analysis
+    - cutoff
+    - disposition
+    - retrospective
+    - learning-proposal
+    - skill-change-proposal
+  evidence:
+    - evidence_id: SYNTHETIC-EVIDENCE-AGGREGATE
+      kind: observed-fact
+      direction: supports
+      statement: One prescriber token is attributed across two dispensing locations.
+    - evidence_id: SYNTHETIC-EVIDENCE-PROTOCOL
+      kind: observed-fact
+      direction: supports
+      statement: The invented protocol record identifies a standing-order role.
+    - evidence_id: SYNTHETIC-EVIDENCE-UNKNOWN
+      kind: unresolved-question
+      direction: weakens
+      statement: The aggregate does not establish transaction-level dispensing or remittance.
+  applied_foundation: SYNTHETIC-FOUNDATION-ROLE-SEPARATION
+  bounded_actions:
+    - action_id: SYNTHETIC-ACTION-DENOMINATOR
+      question: >-
+        Does the compatible national product total materially change the interpretation of the
+        attributed prescriber's visible-row share?
+      source: SYNTHETIC-SOURCE-METHODOLOGY
+      bounds:
+        max_queries: 1
+        max_runtime_seconds: 10
+        max_output_bytes: 2048
+      distinguishing_outcomes:
+        - A compatible unsuppressed national total changes the magnitude or triage lane.
+        - The compatible total confirms scale but does not resolve operational actors.
+      observed_outcome: >-
+        The compatible total confirmed the aggregate scale but did not identify the dispenser,
+        administrator, biller, or payment recipient.
+      disposition_before: triage
+      disposition_after: triage
+      disposition_consequence: no-change; role-resolution evidence remains decisive
+      changed_disposition: false
+    - action_id: SYNTHETIC-ACTION-AFFILIATION
+      question: >-
+        Does one bounded public-directory review identify a dated protocol or dispensing
+        affiliation for the attributed prescriber token?
+      source: SYNTHETIC-SOURCE-PUBLIC-DIRECTORY
+      bounds:
+        max_queries: 2
+        max_runtime_seconds: 20
+        max_output_bytes: 4096
+      distinguishing_outcomes:
+        - A dated public record links an operational role and changes the triage lane.
+        - No dated public record is found and the role question remains unresolved.
+      observed_outcome: >-
+        No dated protocol or dispensing affiliation appeared in the bounded invented directory;
+        absence from that directory does not refute a protocol role.
+      disposition_before: triage
+      disposition_after: triage
+      disposition_consequence: no-change; absence from a bounded public source is not disproof
+      changed_disposition: false
+  cutoff:
+    qualifying_public_actions: []
+    reason: The remaining decisive evidence is transaction-level and unavailable in this exercise.
+    revisit_trigger: A synthetic transaction-level fixture with a conflicting role assignment.
+  disposition: explained
+  retrospective:
+    outcome: A protocol role is a supported ordinary explanation in the invented scenario.
+    limitation: The workflow does not validate any real transaction or provider.
+  candidate_learning:
+    learning_id: SYNTHETIC-LEARNING-CANDIDATE
+    title: Resolve operational roles before interpreting aggregate attribution
+    status: candidate
+    type: process
+    confidence: low
+    scope:
+      programs:
+        - synthetic-drug-benefit
+      datasets:
+        - synthetic-provider-product-aggregate
+      years:
+        - 2099
+      populations:
+        - invented-benefit-enrollees
+    evidence_ids:
+      - SYNTHETIC-EVIDENCE-AGGREGATE
+      - SYNTHETIC-EVIDENCE-PROTOCOL
+      - SYNTHETIC-EVIDENCE-UNKNOWN
+    lesson: Resolve operational roles before treating aggregate attribution as individual activity.
+    why_it_matters: It prevents prescriber attribution from being mislabeled as visits or revenue.
+    counterevidence_and_limits: The exercise cannot establish behavior in any real transaction.
+    failed_approaches: Treating one aggregate prescriber token as one person's patient panel.
+    reuse_guidance: Build the role matrix and effective-dated affiliation lanes before escalation.
+    invalidation_triggers: A conflicting transaction-level fixture or changed source semantics.
+    history:
+      - Created from the completed synthetic case and retained as candidate status.
+  skill_change_proposal:
+    target: synthetic-protocol-workflow
+    evidence: Repeated role-resolution steps in the completed synthetic lifecycle.
+    behavior: Add an explicit role-matrix precondition to a future workflow revision.
+    files:
+      - path/to/future/instruction
+    validation:
+      - role-matrix contract test
+    permission:
+      status: not-granted
+      explicit_user_approval: false
+      change_applied: false
+
+upgrade_rehearsal:
+  installed_baseline_version: 0.1.0
+  proposed_baseline_version: 0.2.0
+  paths:
+    - path: baseline/unchanged-foundation.yaml
+      base_sha256: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+      current_sha256: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+      upstream_sha256: bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+      expected_action: replace-unchanged-baseline
+    - path: baseline/unchanged-skill.txt
+      base_sha256: cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+      current_sha256: cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+      upstream_sha256: cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+      expected_action: no-change
+    - path: baseline/locally-modified-skill.txt
+      base_sha256: dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+      current_sha256: eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+      upstream_sha256: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+      expected_action: conflict-review-required
+    - path: local/user-learning.yaml
+      base_sha256: null
+      current_sha256: abababababababababababababababababababababababababababababababab
+      upstream_sha256: null
+      expected_action: preserve-local-only
+    - path: local/user-skill.txt
+      base_sha256: null
+      current_sha256: aeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeae
+      upstream_sha256: null
+      expected_action: preserve-local-only
+    - path: baseline/removed-method.txt
+      base_sha256: acacacacacacacacacacacacacacacacacacacacacacacacacacacacacacac
+      current_sha256: acacacacacacacacacacacacacacacacacacacacacacacacacacacacacacac
+      upstream_sha256: null
+      expected_action: upstream-removal-decision-required
+    - path: baseline/new-foundation.yaml
+      base_sha256: null
+      current_sha256: null
+      upstream_sha256: adadadadadadadadadadadadadadadadadadadadadadadadadadadadadadad
+      expected_action: add-upstream-baseline

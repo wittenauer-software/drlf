@@ -1,0 +1,39 @@
+id: "[CASE-NNNN]"
+title: "[Short neutral title]"
+status: triage
+created_at: "[YYYY-MM-DD]"
+updated_at: "[YYYY-MM-DD]"
+primary_question: "[Falsifiable research question]"
+programs: []
+subjects: []
+source_manifests: []
+estimated_exposure:
+  value: null
+  measure: null
+  basis: "Not yet estimated"
+alternative_explanations: []
+next_actions:
+  - "[One-sentence summary of next_bounded_action]"
+research_cutoff:
+  reviewed_at: "[YYYY-MM-DD]"
+  decision: continue
+  basis: "[Why another bounded public action could change the disposition]"
+  residual_routes: []
+  public_data_ceiling: []
+  next_bounded_action:
+    question: "[Precise unresolved question]"
+    source: "[Specific lawful and accessible public source]"
+    distinguishing_outcomes: "[How plausible results distinguish competing explanations]"
+    triage_lane: "[Triage lane this action could change]"
+    disposition_change: "[How a plausible result could change routing]"
+    effort_cap: "[Elapsed time, query/page count, download size, compute, and fee cap]"
+  consecutive_no_change_actions: 0
+  revisit_triggers: []
+# Each entry has: id, applicability, outcome, evidence_ids. Outcomes are pending,
+# supported, partial, contradicted, or not-applicable.
+applied_learnings: []
+authorization:
+  contact_subject: false
+  publish: false
+  report_to_government: false
+  contact_counsel: false

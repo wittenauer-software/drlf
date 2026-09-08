@@ -1,0 +1,1177 @@
+{
+  "baseline_version": "0.1.0",
+  "files": [
+    {
+      "bytes": 216,
+      "mode": "100644",
+      "path": ".agents/skills/acquire-cms-data/agents/openai.yaml",
+      "sha256": "81e6621a39e4c15511273e35bf7a12e959669492fdb1e3494724e6582ed101bf"
+    },
+    {
+      "bytes": 2209,
+      "mode": "100644",
+      "path": ".agents/skills/acquire-cms-data/references/source-manifest.md",
+      "sha256": "0ba671fa10a11914e879e2a582ce2cfaf15db39a060b6032e6739d068fb59e93"
+    },
+    {
+      "bytes": 2429,
+      "mode": "100644",
+      "path": ".agents/skills/acquire-cms-data/SKILL.md",
+      "sha256": "ac27d3e50b65ea629d108557475b13aa8256ce38d92741d9fba5ce0887fa4ded"
+    },
+    {
+      "bytes": 228,
+      "mode": "100644",
+      "path": ".agents/skills/investigate-dmepos-supplier-outliers/agents/openai.yaml",
+      "sha256": "756616e7002c971deedf3ee8bcc050d87ad2646d2d8c4548deab0d690c1efffc"
+    },
+    {
+      "bytes": 14195,
+      "mode": "100644",
+      "path": ".agents/skills/investigate-dmepos-supplier-outliers/references/dmepos-scan-contract.md",
+      "sha256": "bc187882b892ba9ee5a1f3e1ca1644fb8501e691c46c042bb8456bd597778959"
+    },
+    {
+      "bytes": 2689,
+      "mode": "100644",
+      "path": ".agents/skills/investigate-dmepos-supplier-outliers/SKILL.md",
+      "sha256": "db4afddee3152ff901e1f31546090558da1794e3d981321402d44b6bf753db11"
+    },
+    {
+      "bytes": 228,
+      "mode": "100644",
+      "path": ".agents/skills/investigate-part-b-service-utilization/agents/openai.yaml",
+      "sha256": "7171a4e5c0d140128602c61bfe4e774eb9ce582fde130a618f109074967af75f"
+    },
+    {
+      "bytes": 3975,
+      "mode": "100644",
+      "path": ".agents/skills/investigate-part-b-service-utilization/references/part-b-scan-contract.md",
+      "sha256": "d0125256c62c012e7075bc0369f2f3b8844edac2118d3655fd95505c5d975d94"
+    },
+    {
+      "bytes": 2307,
+      "mode": "100644",
+      "path": ".agents/skills/investigate-part-b-service-utilization/SKILL.md",
+      "sha256": "12bf4e1620fe84c5dfdb967ea01b2361d0f42f1f15c1efe78650516e85eebadb"
+    },
+    {
+      "bytes": 238,
+      "mode": "100644",
+      "path": ".agents/skills/investigate-pharmacy-protocol-attribution/agents/openai.yaml",
+      "sha256": "3bcc96aedbb9ba13bfe102aa229cb9b3a8d02de1b0cb30e086ad3fb7197440ec"
+    },
+    {
+      "bytes": 2430,
+      "mode": "100644",
+      "path": ".agents/skills/investigate-pharmacy-protocol-attribution/SKILL.md",
+      "sha256": "ff0821fa64ffff618376509863c9fe379ea2716329144f486db8cbeaed6724ff"
+    },
+    {
+      "bytes": 210,
+      "mode": "100644",
+      "path": ".agents/skills/manage-research-cases/agents/openai.yaml",
+      "sha256": "c753f04049bb0e1e86ce06fe6006ead4662b973b3924687dfc37af629af9d1da"
+    },
+    {
+      "bytes": 4796,
+      "mode": "100644",
+      "path": ".agents/skills/manage-research-cases/assets/case-template/analysis/context-review.md",
+      "sha256": "2a91b59ba0eda299bc13d5bd48b1e309c5a02d4db345aae771f0c95f455e00b6"
+    },
+    {
+      "bytes": 1443,
+      "mode": "100644",
+      "path": ".agents/skills/manage-research-cases/assets/case-template/analysis/research-cutoff.md",
+      "sha256": "247e4667c991677e50b596a26c86b5fcbf8db9989cd104bbc83e22c171732e58"
+    },
+    {
+      "bytes": 1350,
+      "mode": "100644",
+      "path": ".agents/skills/manage-research-cases/assets/case-template/case.yaml",
+      "sha256": "cd416094a0caa1d6b541e840f2910fdc27fe671c392c54eeb3e9fd23cc5cb664"
+    },
+    {
+      "bytes": 170,
+      "mode": "100644",
+      "path": ".agents/skills/manage-research-cases/assets/case-template/decision-log.md",
+      "sha256": "88b05ce4b0bdef4f3f03860b70c2dadad0ac47f1f3f45e4bf871e018a052c482"
+    },
+    {
+      "bytes": 996,
+      "mode": "100644",
+      "path": ".agents/skills/manage-research-cases/assets/case-template/dossier/report.md",
+      "sha256": "0760b545fc69a80a487e0e7b2d828e455d63e3583d37183f989a3c207a682c4a"
+    },
+    {
+      "bytes": 190,
+      "mode": "100644",
+      "path": ".agents/skills/manage-research-cases/assets/case-template/dossier/report.yaml",
+      "sha256": "44ed4d3bdd9557f3c47ac8cd33e9445da9b5a1834c1cd3407bdfc6a0ec5f0c3e"
+    },
+    {
+      "bytes": 147,
+      "mode": "100644",
+      "path": ".agents/skills/manage-research-cases/assets/case-template/evidence-log.csv",
+      "sha256": "42c40f291e26c723538621ef2dc9cb9208f052d470e24ed867a05da3de7335e6"
+    },
+    {
+      "bytes": 430,
+      "mode": "100644",
+      "path": ".agents/skills/manage-research-cases/assets/case-template/hypothesis.md",
+      "sha256": "b9ff0b52820a0a0ae46e01a4afff8b70398759d0c3a36cd2a6f3af2f254d6e14"
+    },
+    {
+      "bytes": 1297,
+      "mode": "100644",
+      "path": ".agents/skills/manage-research-cases/assets/case-template/retrospective.md",
+      "sha256": "0637777fc9685d7cd667f0275c10d29ce7cc84890b4e566513b75fa248fd731b"
+    },
+    {
+      "bytes": 201,
+      "mode": "100644",
+      "path": ".agents/skills/manage-research-cases/assets/case-template/sources.md",
+      "sha256": "52d13d104da6a669c5622131a21b6baf68273191f221920a0688f3fca7b396ef"
+    },
+    {
+      "bytes": 5652,
+      "mode": "100644",
+      "path": ".agents/skills/manage-research-cases/references/case-schema.md",
+      "sha256": "22deb72476991583a7a6b037b468ceec64f219d2d9932b1c6177a07df1e7205f"
+    },
+    {
+      "bytes": 11345,
+      "mode": "100644",
+      "path": ".agents/skills/manage-research-cases/scripts/validate_cases.py",
+      "sha256": "c5377aeb7a117619e33869f0a83c54853a79b0baaec6a5228cf72683ecf0a7d5"
+    },
+    {
+      "bytes": 2653,
+      "mode": "100644",
+      "path": ".agents/skills/manage-research-cases/SKILL.md",
+      "sha256": "c79a2480b41e5e8ce87f5be1f25637e124e322f9b3a0a318f9145165af33a9bb"
+    },
+    {
+      "bytes": 2536,
+      "mode": "100644",
+      "path": ".agents/skills/README.md",
+      "sha256": "44c1059f80ef3bd7ac082d07c2dc4ad7ae5eaf0845a1d4c8c2d878a7cc30870b"
+    },
+    {
+      "bytes": 243,
+      "mode": "100644",
+      "path": ".agents/skills/synthesize-research-learnings/agents/openai.yaml",
+      "sha256": "67d2397f484bb539a6d7dfb804a6bf45f36a30226f39a9bf2253e997cb3d42f0"
+    },
+    {
+      "bytes": 1067,
+      "mode": "100644",
+      "path": ".agents/skills/synthesize-research-learnings/assets/learning-card.md",
+      "sha256": "30324d353bb5927d34a1fb4525ad489e4f04964f096c0fb2db3d73e909f70de3"
+    },
+    {
+      "bytes": 3794,
+      "mode": "100644",
+      "path": ".agents/skills/synthesize-research-learnings/references/learning-schema.md",
+      "sha256": "f21f62f328139283af501a8f450af8136a6f7874de7d2295890492a1fe5ca75b"
+    },
+    {
+      "bytes": 14436,
+      "mode": "100644",
+      "path": ".agents/skills/synthesize-research-learnings/scripts/validate_knowledge.py",
+      "sha256": "0e14d0cd309af605270aa6265d66744ae7db71037c5422c5536b7a90dd9e0797"
+    },
+    {
+      "bytes": 2653,
+      "mode": "100644",
+      "path": ".agents/skills/synthesize-research-learnings/SKILL.md",
+      "sha256": "e58cb997231af5d602deba0d2533656a8a53a08187040587825294c57a069cf2"
+    },
+    {
+      "bytes": 236,
+      "mode": "100644",
+      "path": ".agents/skills/validate-claims-anomalies/agents/openai.yaml",
+      "sha256": "29e89693a2debbb929f086bbba78139ebbe3839992c7ccfc78141b8dc507ad34"
+    },
+    {
+      "bytes": 3563,
+      "mode": "100644",
+      "path": ".agents/skills/validate-claims-anomalies/references/triage-rubric.md",
+      "sha256": "31a594f3ea92ddcd4bf32cab7199b7d011a45509570bda046ef7ab924ce2931a"
+    },
+    {
+      "bytes": 2544,
+      "mode": "100644",
+      "path": ".agents/skills/validate-claims-anomalies/SKILL.md",
+      "sha256": "23d4585863f239a186b870f988ef5e7a5ee6cc91958f3a86949af76b17df7028"
+    },
+    {
+      "bytes": 317,
+      "mode": "100644",
+      "path": ".env.example",
+      "sha256": "2d4092040f5ab42f31201b93147c2ef3534ac56b16895dc2f70bdb475fe131fc"
+    },
+    {
+      "bytes": 81,
+      "mode": "100644",
+      "path": ".gitattributes",
+      "sha256": "12caea2c70bcb6e3049d0090047590b280d493cce7f72343606b7ff5d1661ecf"
+    },
+    {
+      "bytes": 1007,
+      "mode": "100644",
+      "path": ".github/ISSUE_TEMPLATE/bug.yml",
+      "sha256": "ba2e6aeacedd7052349688880e6d9a329dba892259566d9b35d4578c09707268"
+    },
+    {
+      "bytes": 28,
+      "mode": "100644",
+      "path": ".github/ISSUE_TEMPLATE/config.yml",
+      "sha256": "1f103c6a9dd07cd13a9a6f17ace6b813f47747eb9cb7e00488cb2073caaf91bb"
+    },
+    {
+      "bytes": 856,
+      "mode": "100644",
+      "path": ".github/ISSUE_TEMPLATE/feature.yml",
+      "sha256": "f0f6be438652e743470065e3a76f13186216dadb971ed8b4eb028e6368b35d7c"
+    },
+    {
+      "bytes": 137,
+      "mode": "100644",
+      "path": ".gitignore",
+      "sha256": "58c40450c01711d4129879f86425f992c5d4c2c77579a73fa8f3b3de24835cad"
+    },
+    {
+      "bytes": 7933,
+      "mode": "100644",
+      "path": "AGENTS.md",
+      "sha256": "789a11569941a384b2dbafe1f7761dd4afbfc8b983749886dfc83fbc3d782e7b"
+    },
+    {
+      "bytes": 1771,
+      "mode": "100644",
+      "path": "CODE_OF_CONDUCT.md",
+      "sha256": "037c13c84a092aa4972a1ff79a246850f1b7555ef51f1d27b2ab53a5c5774afe"
+    },
+    {
+      "bytes": 647,
+      "mode": "100644",
+      "path": "compose.yaml",
+      "sha256": "1455d952f4bd636dab85ff217ea9d40274b0e5f113a084a240cfde7fcb1d9cf6"
+    },
+    {
+      "bytes": 2065,
+      "mode": "100644",
+      "path": "CONTRIBUTING.md",
+      "sha256": "2122f4f061fea668329a9d3cff8227d5dab484f903073d7b2a4e5706b0a7f8ae"
+    },
+    {
+      "bytes": 10438,
+      "mode": "100644",
+      "path": "docs/architecture.md",
+      "sha256": "6fc41ee2687069ccbf2e6cb9a4e5700deabe8f071c70b6cea1bb19cc0e5abcf5"
+    },
+    {
+      "bytes": 11794,
+      "mode": "100644",
+      "path": "docs/capabilities.md",
+      "sha256": "f11ce95fdd41586b8fd020e6bb50719375f79d7f597a75f440ea19e2e752a257"
+    },
+    {
+      "bytes": 9384,
+      "mode": "100644",
+      "path": "docs/data-sources/adding-a-source.md",
+      "sha256": "a7601517b9c5ecc834d89644e0c3f6535c59f6db0beaaff4d79df88f2e661b39"
+    },
+    {
+      "bytes": 10392,
+      "mode": "100644",
+      "path": "docs/data-sources/README.md",
+      "sha256": "743f6536412b8a9fd793cd0992a60eab7aa116f5ad2d27030280055c7af512c0"
+    },
+    {
+      "bytes": 10237,
+      "mode": "100644",
+      "path": "docs/getting-started.md",
+      "sha256": "4c5dbd670ac6e489e382e34e1a7bf07ef2baac4cf5a17d4fe86ec7cb7d28c989"
+    },
+    {
+      "bytes": 6025,
+      "mode": "100644",
+      "path": "docs/methods/dmepos-supplier-outliers.md",
+      "sha256": "d87cb6c27504114f56af310380b20aa676d207bc6d7ea65e05aea089903c301a"
+    },
+    {
+      "bytes": 7398,
+      "mode": "100644",
+      "path": "docs/methods/README.md",
+      "sha256": "988248c6cfd0a08f15328f5c16c7f59c52b5a84ca99be2aca555b3be332e423e"
+    },
+    {
+      "bytes": 18955,
+      "mode": "100644",
+      "path": "examples/synthetic-identities.yaml",
+      "sha256": "b948915c7e11b580ea5cc7afda1e6028076e65bdfb7703ea72da8094f66303a8"
+    },
+    {
+      "bytes": 3529,
+      "mode": "100644",
+      "path": "examples/synthetic-part-b-screen/README.md",
+      "sha256": "0ef69d28c71d69908abcee0b7a8642596e09832ae3fd92045ca8e182b2083f6b"
+    },
+    {
+      "bytes": 2203,
+      "mode": "100644",
+      "path": "examples/synthetic-part-b-screen/scan.csv",
+      "sha256": "6680b16dbe10035eb153fd732eb62fcd41e187706ca7d45544555bde883b8f8e"
+    },
+    {
+      "bytes": 2667,
+      "mode": "100644",
+      "path": "examples/synthetic-workflow-suite/README.md",
+      "sha256": "b6ab99207386537dc673151162524c70d66d5e9caf6faa8f4b10ea93d46f8c58"
+    },
+    {
+      "bytes": 14201,
+      "mode": "100644",
+      "path": "examples/synthetic-workflow-suite/scenarios.yaml",
+      "sha256": "272145b4964742d98569e133c84719d15cc5ca1dabd4435fd053952f77772d19"
+    },
+    {
+      "bytes": 32444,
+      "mode": "100644",
+      "path": "foundations/catalog.yaml",
+      "sha256": "8d9fd9caa74c2111218c9719b45509a056e584a563a912b81351944def4a2b20"
+    },
+    {
+      "bytes": 952,
+      "mode": "100644",
+      "path": "foundations/README.md",
+      "sha256": "0602c367e8f7df14684b7d36ced083f2c2702dfc40b5df994ad85197861f56d6"
+    },
+    {
+      "bytes": 2539,
+      "mode": "100644",
+      "path": "GOVERNANCE.md",
+      "sha256": "476bc627e46497de19cbff765e11b1b2537efd7cf07ee249f926dae325c2cbb3"
+    },
+    {
+      "bytes": 11358,
+      "mode": "100644",
+      "path": "LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "bytes": 256,
+      "mode": "100644",
+      "path": "NOTICE",
+      "sha256": "b2db3a2d6e3ee10f1abbc9d36c628c0ce652ac20d3c8847bd6db924cf81c2961"
+    },
+    {
+      "bytes": 1330,
+      "mode": "100644",
+      "path": "pyproject.toml",
+      "sha256": "511e634832f69ad7676478d12ba2ad3b9af16dec3e7c95ed24e487093e7d3d7e"
+    },
+    {
+      "bytes": 3119,
+      "mode": "100644",
+      "path": "README.md",
+      "sha256": "6499060ab4783fdb0201dbb762f992a31455a04161b6181ebd0fa8bd3560f1ae"
+    },
+    {
+      "bytes": 917,
+      "mode": "100644",
+      "path": "research/data-manifests/README.md",
+      "sha256": "a4399fc367d14570404d8b06db6b4ccd52ee6b7833762133c8b22520e9be47da"
+    },
+    {
+      "bytes": 6535,
+      "mode": "100644",
+      "path": "research/data-manifests/source-manifest.schema.json",
+      "sha256": "e5f30701893ff6e3f05caaa0fd5acde726843fa3acffceb6746fe7a779b2db40"
+    },
+    {
+      "bytes": 1240,
+      "mode": "100644",
+      "path": "SECURITY.md",
+      "sha256": "13a3643278ce6ed09badf7e4840d0f8f7195a24c8770a412accf0ac7bcd6a105"
+    },
+    {
+      "bytes": 32038,
+      "mode": "100644",
+      "path": "sql/analysis/dmepos/candidate_service_code_discovery.sql",
+      "sha256": "fb553a7cee9b9a29a1691476bf7f30cec99505db3fcf195273c7e11dcf7006bb"
+    },
+    {
+      "bytes": 6058,
+      "mode": "100644",
+      "path": "sql/analysis/dmepos/frozen_candidate_identities.sql",
+      "sha256": "b5787dd897f9edca225938bd06075a14c25ac643666a4fd782935ec0b040eb84"
+    },
+    {
+      "bytes": 25773,
+      "mode": "100644",
+      "path": "sql/analysis/dmepos/supplier_service_code_market_context.sql",
+      "sha256": "175ba16e884a1b83063e07ef04fcc8dbaaf7f10e4a608f474ad0344a52088ce1"
+    },
+    {
+      "bytes": 35321,
+      "mode": "100644",
+      "path": "sql/analysis/dmepos/supplier_service_code_market_context_by_state.sql",
+      "sha256": "375fb1468668b3edf01bdcded8f95dee1bb79b87c066d79b5428a233c8d4c105"
+    },
+    {
+      "bytes": 71995,
+      "mode": "100644",
+      "path": "sql/analysis/dmepos/supplier_service_code_peer_review.sql",
+      "sha256": "e98708bceee21306a4cadf74bb715b5538387052f7539b40d88a4b0f80787be9"
+    },
+    {
+      "bytes": 35241,
+      "mode": "100644",
+      "path": "sql/analysis/dmepos/supplier_summary_screen.sql",
+      "sha256": "e34e0817fbe79555817dbfa87f1bff6659caf3a7f23e1549ade2133bc2a59633"
+    },
+    {
+      "bytes": 13308,
+      "mode": "100644",
+      "path": "sql/analysis/open_payments/organization_annual_summary.sql",
+      "sha256": "38a74d05ed951499b75e28b0bbe8f484649c230066ded1ee67fdefc05105bccc"
+    },
+    {
+      "bytes": 12531,
+      "mode": "100644",
+      "path": "sql/analysis/open_payments/organization_recipient_panel.sql",
+      "sha256": "4546e00acfd5b34214f13807e353d31d657d911f84210979a772210d7f95d46c"
+    },
+    {
+      "bytes": 13833,
+      "mode": "100644",
+      "path": "sql/analysis/open_payments/organization_roster_transitions.sql",
+      "sha256": "0b34a25b250a0fc43aba4085b84d3d12d7990b5c9bd11f6fd4ca8c361b9b3cb6"
+    },
+    {
+      "bytes": 39305,
+      "mode": "100644",
+      "path": "sql/analysis/part_b/provider_service_scan.sql",
+      "sha256": "0755679b42607f18820a11fa2410a30bca49e1e23d54c0edc535f8bca925cca4"
+    },
+    {
+      "bytes": 4982,
+      "mode": "100644",
+      "path": "sql/analysis/part_d/churn.sql",
+      "sha256": "ca56b22e91f2cb578727d03c04d12a8d699a0ce899a98194a2a0996e381ba68c"
+    },
+    {
+      "bytes": 2698,
+      "mode": "100644",
+      "path": "sql/analysis/part_d/leaders.sql",
+      "sha256": "bd4d42eb88ad96466e56db8da8c0710ce7148d695f236c3c6d1b0bd7846968b8"
+    },
+    {
+      "bytes": 1530,
+      "mode": "100644",
+      "path": "sql/analysis/part_d/national_denominators.sql",
+      "sha256": "975415af71e87ce3c1e2027414f6723bd4500620e479823af38e79c85707c206"
+    },
+    {
+      "bytes": 1847,
+      "mode": "100644",
+      "path": "sql/analysis/part_d/portfolio.sql",
+      "sha256": "61ab13259ed4b5d373b42a4bbf9fac814838819f4105125ef78bdb7dab187ff1"
+    },
+    {
+      "bytes": 5306,
+      "mode": "100644",
+      "path": "sql/analysis/part_d/trajectory.sql",
+      "sha256": "91d4f623fe69c46e561cb3de36cce74bf93b40969a93fb76fa9398438c95c9c2"
+    },
+    {
+      "bytes": 4873,
+      "mode": "100644",
+      "path": "sql/migrations/0001_foundation.sql",
+      "sha256": "5138a8d8cba153ca5fefb6288ee32d9a2dbda6c473361f38155cbc87550ac432"
+    },
+    {
+      "bytes": 6370,
+      "mode": "100644",
+      "path": "sql/migrations/0002_harden_provenance.sql",
+      "sha256": "81af2d7372a94bb4eeaea0359f43db35cbb47b9ce0c5d8315ebd2cde229c5040"
+    },
+    {
+      "bytes": 1906,
+      "mode": "100644",
+      "path": "sql/migrations/0003_part_d_provider_drug.sql",
+      "sha256": "8100b1e5a9991cc7abf29be76611957d90cd2a7d011c67b8a5f0c3b58f99933c"
+    },
+    {
+      "bytes": 3146,
+      "mode": "100644",
+      "path": "sql/migrations/0004_part_d_geography_drug.sql",
+      "sha256": "0e5dab918b371ff140e6ef44c8f396229962f405838c9a6e2f9d84502e148baa"
+    },
+    {
+      "bytes": 478,
+      "mode": "100644",
+      "path": "sql/migrations/0005_part_d_provider_age65_fields.sql",
+      "sha256": "903c2cb1b6b552b9c5b2b3dcde625a9b2912c838e070b83dade0bea9f008cc46"
+    },
+    {
+      "bytes": 4189,
+      "mode": "100644",
+      "path": "sql/migrations/0006_open_payments_general.sql",
+      "sha256": "153ca269dc785367f57d07bb44f0c2f8be744a4f39a7d877e3def39881f734c5"
+    },
+    {
+      "bytes": 938,
+      "mode": "100644",
+      "path": "sql/migrations/0007_open_payments_recipient_identity.sql",
+      "sha256": "44f2cc1287915c67f9a57309bddfa082f4f916ee5ddd75e1f694f5b48a3f41d2"
+    },
+    {
+      "bytes": 464,
+      "mode": "100644",
+      "path": "sql/migrations/0008_open_payments_product_slots.sql",
+      "sha256": "a2a1e6532ee5dabfacc2d95c0f39c08fa39f1a88c6e345b41162e3c858dd983a"
+    },
+    {
+      "bytes": 10128,
+      "mode": "100644",
+      "path": "sql/migrations/0009_part_b_provider_claims.sql",
+      "sha256": "57a0ff5e498417d0b88d59f7efef2a1a656f82299593085d2f2796000c028044"
+    },
+    {
+      "bytes": 493,
+      "mode": "100644",
+      "path": "sql/migrations/0010_source_release_retrieval_filters.sql",
+      "sha256": "c690733ef3eedf42f145d347fce2d48e11049964da19c0d7d554fcfedf2fa9df"
+    },
+    {
+      "bytes": 19697,
+      "mode": "100644",
+      "path": "sql/migrations/0011_dmepos_supplier.sql",
+      "sha256": "4a1e9e25e52d74dd55938dd756475d0d7d196af7210f984f5eb61b2a9cbc8a23"
+    },
+    {
+      "bytes": 4938,
+      "mode": "100644",
+      "path": "sql/migrations/0012_dmepos_supplier_service.sql",
+      "sha256": "6db0abcedf8fcce3f14352bd41465b7d5cb3923dc7a254ae103f8eb695fa2570"
+    },
+    {
+      "bytes": 2453,
+      "mode": "100644",
+      "path": "sql/README.md",
+      "sha256": "d2e01153b32889f5dec4ce9d2804e8a805ba01a0065fe30ae1e47afafdd82d6f"
+    },
+    {
+      "bytes": 71,
+      "mode": "100644",
+      "path": "src/drlf/__init__.py",
+      "sha256": "8607993b9d5c307da847132196e11f3dc941b82ba87ac4bf9e642bd61f69cf34"
+    },
+    {
+      "bytes": 63,
+      "mode": "100644",
+      "path": "src/drlf/__main__.py",
+      "sha256": "1ed5bb29661a5abf9fbc7f127107e8af3cfc910d7f57993270f7ceb72dc6e70b"
+    },
+    {
+      "bytes": 83,
+      "mode": "100644",
+      "path": "src/drlf/analysis/__init__.py",
+      "sha256": "4383199e50081401f0ef162ca21b79487a85f6a1fd93b88f92c420a3c5ade2b1"
+    },
+    {
+      "bytes": 45195,
+      "mode": "100644",
+      "path": "src/drlf/analysis/dmepos_code_freeze.py",
+      "sha256": "e6f2e8c8df6079c5f6cba6e791f494bc41d496edb586c777daefff2687407c01"
+    },
+    {
+      "bytes": 426,
+      "mode": "100644",
+      "path": "src/drlf/analysis/dmepos_identity.py",
+      "sha256": "13463e846da7a1ce682d42425b3ba5f84c20b47e45789067232268df039b6742"
+    },
+    {
+      "bytes": 47712,
+      "mode": "100644",
+      "path": "src/drlf/analysis/dmepos_shortlist.py",
+      "sha256": "b1c2c0bcb3d9e89eb12d0fd861f8a490fb36e39c084d1cd2565a47290d7318f8"
+    },
+    {
+      "bytes": 16750,
+      "mode": "100644",
+      "path": "src/drlf/analysis/open_payments_organization.py",
+      "sha256": "47091a0a0643489cfedcc3d9400c4e6b852c616ea45edbcd6fe1dc9b0001c904"
+    },
+    {
+      "bytes": 21335,
+      "mode": "100644",
+      "path": "src/drlf/analysis/part_b_multicode_reach.py",
+      "sha256": "06d2e31f27de7201009ac78a72f3b115935a2ccd3b0f20be6be4586808512090"
+    },
+    {
+      "bytes": 8982,
+      "mode": "100644",
+      "path": "src/drlf/analysis/part_b_shortlist.py",
+      "sha256": "bc50bddb0e42dd7426bec9ac49854674e1893dc41aa7db8494826f86f2dd1a3a"
+    },
+    {
+      "bytes": 26335,
+      "mode": "100644",
+      "path": "src/drlf/analysis/part_d_first_pass.py",
+      "sha256": "f2114f8f65288e91edcc316db1f705bb09145917f698631e31a6383775403aca"
+    },
+    {
+      "bytes": 10262,
+      "mode": "100644",
+      "path": "src/drlf/analysis/sql_runner.py",
+      "sha256": "0db5e3ad1479e9c9539f97a5f1027473c0a914c0ffbb02a9e9bb02fac1462ac8"
+    },
+    {
+      "bytes": 7068,
+      "mode": "100644",
+      "path": "src/drlf/baseline_manifest.py",
+      "sha256": "f0d14c8761968a04be348ed1cac8df29fb55b420d5e8da794734478f8a030397"
+    },
+    {
+      "bytes": 15322,
+      "mode": "100644",
+      "path": "src/drlf/case_scaffold.py",
+      "sha256": "65e463a4a5f579e2b3e04db1dbba2ce0b912d1c196947c2286f59392dbc7bde7"
+    },
+    {
+      "bytes": 90240,
+      "mode": "100644",
+      "path": "src/drlf/cli.py",
+      "sha256": "f6cb36b73b092ba71d177443ea3227b0a8c805588de629e33c8007076a7d1c64"
+    },
+    {
+      "bytes": 489,
+      "mode": "100644",
+      "path": "src/drlf/config.py",
+      "sha256": "2bcc2ebbea9b081b94e3bf5f412a1387d48a31224386330f14805df27b936e68"
+    },
+    {
+      "bytes": 5957,
+      "mode": "100644",
+      "path": "src/drlf/database.py",
+      "sha256": "6f02919c2daf1717e514663f5627468c22cd10546f2953410ae5665477ebd3e2"
+    },
+    {
+      "bytes": 623,
+      "mode": "100644",
+      "path": "src/drlf/doctor_models.py",
+      "sha256": "ccdb6d41e93825af07be04361869548bb836d88faa3bde92251b9b293a2b63b1"
+    },
+    {
+      "bytes": 4258,
+      "mode": "100644",
+      "path": "src/drlf/foundation_catalog.py",
+      "sha256": "b7c42f506cff599cf499fd6ec75d46300d7b01281112f781546be62fa5432083"
+    },
+    {
+      "bytes": 81,
+      "mode": "100644",
+      "path": "src/drlf/ingestion/__init__.py",
+      "sha256": "f305363f0948b5cf23b8f9aa426cf222a92028bf9c17e11c9a9eaec373765c55"
+    },
+    {
+      "bytes": 27532,
+      "mode": "100644",
+      "path": "src/drlf/ingestion/dmepos_supplier.py",
+      "sha256": "cec0368892deb2bd2d37a1ef66fed122bceb63798a6dc2f4317dc83463b2b21b"
+    },
+    {
+      "bytes": 5591,
+      "mode": "100644",
+      "path": "src/drlf/ingestion/dmepos_supplier_service.py",
+      "sha256": "e8144cd71677f53cd96daac438e98ac7022325e5431c534c70cdc62107763b1f"
+    },
+    {
+      "bytes": 23301,
+      "mode": "100644",
+      "path": "src/drlf/ingestion/open_payments_general.py",
+      "sha256": "fd8b730a2fa986f82ce4e25d331c86ae7b412831749f14f8ca95f81ecc833e81"
+    },
+    {
+      "bytes": 14827,
+      "mode": "100644",
+      "path": "src/drlf/ingestion/part_b_common.py",
+      "sha256": "86161755e9fe09cf25fe96bce12b58d6f1e6a8e38a139d14224880582a77de5c"
+    },
+    {
+      "bytes": 8357,
+      "mode": "100644",
+      "path": "src/drlf/ingestion/part_b_provider.py",
+      "sha256": "8a661b1dd8b9475a12f6393c752399ad3d3c48930a65831db561e8f0aca09e26"
+    },
+    {
+      "bytes": 3637,
+      "mode": "100644",
+      "path": "src/drlf/ingestion/part_b_provider_service.py",
+      "sha256": "74d8bd7922e765a78eb4df96c317b86ad1714697ce1febd006225d2151a6ca1e"
+    },
+    {
+      "bytes": 11481,
+      "mode": "100644",
+      "path": "src/drlf/ingestion/part_d_geography_drug.py",
+      "sha256": "5625a868a8f11f0307f5ea9738c2b7c57eb9c37917815c217a9b964ae77d7877"
+    },
+    {
+      "bytes": 11388,
+      "mode": "100644",
+      "path": "src/drlf/ingestion/part_d_provider_drug.py",
+      "sha256": "490e98bb8d183ed813d1808eba25b3af71da4270e1ddf48a3d5dcb8f17baf724"
+    },
+    {
+      "bytes": 9148,
+      "mode": "100644",
+      "path": "src/drlf/onboarding_demo.py",
+      "sha256": "e2b08b8dfef76be62104fafffef03876fc98495be8149a62b0420241ab4a5057"
+    },
+    {
+      "bytes": 319,
+      "mode": "100644",
+      "path": "src/drlf/public_release/__init__.py",
+      "sha256": "3660ab0085366350adbaf5e752332a9e7cd46115bf584bb9dcdc94ce19b3cca7"
+    },
+    {
+      "bytes": 3283,
+      "mode": "100644",
+      "path": "src/drlf/public_release/bounds.py",
+      "sha256": "b4b02e203d2d3b7395ca2dfc8434b7a05e2f82a948c767dc29dbb54e8b3544d9"
+    },
+    {
+      "bytes": 19727,
+      "mode": "100644",
+      "path": "src/drlf/public_release/checks.py",
+      "sha256": "3dca923d107898a29c350426be3692206a425b6e6c3ce711c53a411be80c9626"
+    },
+    {
+      "bytes": 13950,
+      "mode": "100644",
+      "path": "src/drlf/public_release/filesystem.py",
+      "sha256": "a946fda3ad541653d47e0aa4a87180a751faf2cc7e235a1bb86cb8681adff770"
+    },
+    {
+      "bytes": 24883,
+      "mode": "100644",
+      "path": "src/drlf/public_release/git_tree.py",
+      "sha256": "43eaed4a023401cf77106c7f6fd104d728523b1f8a6701872fb84292d6ae0909"
+    },
+    {
+      "bytes": 4217,
+      "mode": "100644",
+      "path": "src/drlf/public_release/models.py",
+      "sha256": "7efa6f8ecaba088dcdd19f0f735c9e12e9f457851514cd7751ce8426654b56dc"
+    },
+    {
+      "bytes": 18491,
+      "mode": "100644",
+      "path": "src/drlf/public_release/policy.py",
+      "sha256": "8d99e726f71104b38c28a52bffe95e8dc90cd70c2372e39ef423e8129db9ca1d"
+    },
+    {
+      "bytes": 8869,
+      "mode": "100644",
+      "path": "src/drlf/public_release/runner.py",
+      "sha256": "4080cf2c689ebb1ea9f64c4c3abbb77c9ee62a00cde165fc22a83d26ca85f460"
+    },
+    {
+      "bytes": 73,
+      "mode": "100644",
+      "path": "src/drlf/public_release/schemas/__init__.py",
+      "sha256": "08fc4bc3b820d8359b925982dde5f8681f48af51fa637ece9ecedb4afeb81973"
+    },
+    {
+      "bytes": 1481,
+      "mode": "100644",
+      "path": "src/drlf/public_release/schemas/candidate-inventory.schema.json",
+      "sha256": "dd90f98b9cd24d07f74ecf9d87bd25ca7fd6c9b9fea8bb22fd427e00713d30f2"
+    },
+    {
+      "bytes": 1175,
+      "mode": "100644",
+      "path": "src/drlf/public_release/schemas/deny-inventory.schema.json",
+      "sha256": "7844f5206826bebeb2557a1af41740479386638842376fd63faefdacacf733e0"
+    },
+    {
+      "bytes": 5220,
+      "mode": "100644",
+      "path": "src/drlf/public_release/schemas/policy.schema.json",
+      "sha256": "60554f15c0e110fc477856124f05c3caa68410867963ab8a786f0744b08462ad"
+    },
+    {
+      "bytes": 10441,
+      "mode": "100644",
+      "path": "src/drlf/public_release/schemas/public-release-report.schema.json",
+      "sha256": "90223b2ee7b625c2947b047149e78e59b6420f76bd3fb655c12e7900ca888ace"
+    },
+    {
+      "bytes": 1041,
+      "mode": "100644",
+      "path": "src/drlf/public_release/schemas/synthetic-identities.schema.json",
+      "sha256": "b991529c8526b0e01f49db0ff17b7ea6c5e1616a28c913609ac95a0a0e4a8105"
+    },
+    {
+      "bytes": 76,
+      "mode": "100644",
+      "path": "src/drlf/reporting/__init__.py",
+      "sha256": "306235599adcd8213f39ce68780a82bd626f2dc54c4c7f944abfb505bd1c9044"
+    },
+    {
+      "bytes": 6963,
+      "mode": "100644",
+      "path": "src/drlf/reporting/first_pass.py",
+      "sha256": "5d117c8fd1537b807395598a754ff844c88c9fd793a833f756c81219001593cb"
+    },
+    {
+      "bytes": 63,
+      "mode": "100644",
+      "path": "src/drlf/sources/__init__.py",
+      "sha256": "a6b986bba74972f39159a8d3cb38fb9412d85afa252b1f03edc9681cab6e88b9"
+    },
+    {
+      "bytes": 21352,
+      "mode": "100644",
+      "path": "src/drlf/sources/cms_api.py",
+      "sha256": "3ab13825925eedb23f9a296c8f2db05f0e3e3385387c581748f35749daae34c7"
+    },
+    {
+      "bytes": 3854,
+      "mode": "100644",
+      "path": "src/drlf/sources/cms_catalog.py",
+      "sha256": "a5e836d6cb8c6978e67cf0ef05dc6045b545b0875149f693a6dbb94d1f3b5b86"
+    },
+    {
+      "bytes": 21118,
+      "mode": "100644",
+      "path": "src/drlf/sources/cms_file.py",
+      "sha256": "75f4fa30e74ce42b96974e897b4dd1f89cfd926c9978558b68c16f2cf44bf2d8"
+    },
+    {
+      "bytes": 22233,
+      "mode": "100644",
+      "path": "src/drlf/sources/cms_provider_records_manifest.py",
+      "sha256": "c0e7553911d02152924c840ae4442c33cec56ecbc10704e9673cddd32db11b7b"
+    },
+    {
+      "bytes": 28541,
+      "mode": "100644",
+      "path": "src/drlf/sources/dmepos_manifest.py",
+      "sha256": "14cb3c34d1d5450a0c79fa9eea13af771463376ab7d702b5e0cebbc4fa125235"
+    },
+    {
+      "bytes": 29674,
+      "mode": "100644",
+      "path": "src/drlf/sources/dmepos_supplier_service_manifest.py",
+      "sha256": "3af8b64771223b576487824cf82d5ba9f84e27e7debe5b7bb7b7a6981dc8df9f"
+    },
+    {
+      "bytes": 766,
+      "mode": "100644",
+      "path": "src/drlf/sources/manifest.py",
+      "sha256": "d9cbed3820df47fd236e24dcb11fd7985a5ca95baf8739817507ced56c618d22"
+    },
+    {
+      "bytes": 7354,
+      "mode": "100644",
+      "path": "src/drlf/sources/nppes_manifest.py",
+      "sha256": "7b57731f049b34d2c86316f6e9aeaaeb7542f5216f26f547e97b99b0d88c3e3e"
+    },
+    {
+      "bytes": 42135,
+      "mode": "100644",
+      "path": "src/drlf/sources/open_payments.py",
+      "sha256": "d094789aebf23ef7e17a95176867d74d8da29e19283e3745cf011f02414239b5"
+    },
+    {
+      "bytes": 19381,
+      "mode": "100644",
+      "path": "src/drlf/sources/part_b_provider_manifest.py",
+      "sha256": "b11a2b646d052f79da0f82b649a1b6d26f28b06175f92e0a32b06c2a1430e56b"
+    },
+    {
+      "bytes": 17275,
+      "mode": "100644",
+      "path": "src/drlf/sources/part_b_provider_service_manifest.py",
+      "sha256": "3a46f485b7779baec5637cc032b9a2e45a1436d2a186ad5dc77262ebe437a99c"
+    },
+    {
+      "bytes": 11843,
+      "mode": "100644",
+      "path": "src/drlf/sources/part_d_geography_manifest.py",
+      "sha256": "c39137d7f6bb66dbfe4bb8cee8b19a9d92cfb23d19be9dbebb3314517e4ae4ac"
+    },
+    {
+      "bytes": 10290,
+      "mode": "100644",
+      "path": "src/drlf/sources/part_d_manifest.py",
+      "sha256": "655e42816e4d3c8327372fa8c8961b7d0446ae7ca1df4bde68460de515b6b658"
+    },
+    {
+      "bytes": 42734,
+      "mode": "100644",
+      "path": "src/drlf/synthetic_workflows.py",
+      "sha256": "98a4f21222734b0613474267f1b921f7ad901423ce9908e63ae846d255b71747"
+    },
+    {
+      "bytes": 78582,
+      "mode": "100644",
+      "path": "src/drlf/workspace_lifecycle.py",
+      "sha256": "e19e2b4dcc64522488a2c15f388ca527f0ec879593d0e4d01297a6878851ee0f"
+    },
+    {
+      "bytes": 41274,
+      "mode": "100644",
+      "path": "src/drlf/workspace_status.py",
+      "sha256": "b374c80bca383cdf7087ec603b9ac1ee412e89a2c161f9c357a097fb04840bc0"
+    },
+    {
+      "bytes": 831,
+      "mode": "100644",
+      "path": "SUPPORT.md",
+      "sha256": "62c7e14c4b4d16a2c0ebaff367820d878abab43587dd2099440a2c7b47df142d"
+    },
+    {
+      "bytes": 1223,
+      "mode": "100644",
+      "path": "tests/test_baseline_manifest.py",
+      "sha256": "90a9a6ed2a32f1384bc8693e5d58d862ef9f38d3c08ca364f914c3c5cbbc9221"
+    },
+    {
+      "bytes": 2330,
+      "mode": "100644",
+      "path": "tests/test_cli_workspace_gate.py",
+      "sha256": "01c665eba1970f614400d4e507e60418f0959739172358505ffca0ba961f9be5"
+    },
+    {
+      "bytes": 2579,
+      "mode": "100644",
+      "path": "tests/test_cms_catalog.py",
+      "sha256": "6257b88b231406a8e99694cb3865dae5e4320b92c3bf56b1a4ae8e04a4d7c909"
+    },
+    {
+      "bytes": 9908,
+      "mode": "100644",
+      "path": "tests/test_cms_file.py",
+      "sha256": "1fff2d44335e2993d6b41bbb5dc81cc90f1c22cf3caa94c2aaf34a4aa31a109a"
+    },
+    {
+      "bytes": 9903,
+      "mode": "100644",
+      "path": "tests/test_cms_provider_records_manifest.py",
+      "sha256": "647992f43e48c629081d983dfe11f29819c100b547dcb69b49162765bce7fccc"
+    },
+    {
+      "bytes": 351,
+      "mode": "100644",
+      "path": "tests/test_config.py",
+      "sha256": "abb8d3c2091929179e6d5e602d71ed118face1106800ad044fbed850775fc79a"
+    },
+    {
+      "bytes": 21568,
+      "mode": "100644",
+      "path": "tests/test_dmepos_code_freeze.py",
+      "sha256": "7245c43a94aa663f050d57fa193956b15a77ebcd8aad7c0a540d5687f2a4c8ed"
+    },
+    {
+      "bytes": 4676,
+      "mode": "100644",
+      "path": "tests/test_dmepos_code_freeze_cli.py",
+      "sha256": "49793380e5c1e5615548414e7929edfe4e02e20a6e1ce491b6f80c5ab1f4cb4a"
+    },
+    {
+      "bytes": 6653,
+      "mode": "100644",
+      "path": "tests/test_dmepos_identity.py",
+      "sha256": "dd22845ccdd5adac72589334f49b62caef0af92d35db347769c858fa092e7a02"
+    },
+    {
+      "bytes": 10460,
+      "mode": "100644",
+      "path": "tests/test_dmepos_ingestion.py",
+      "sha256": "d1c40f3e93d069e7b0a988ecd24375c54fd0d04abc1c1c250190eb2082f80b24"
+    },
+    {
+      "bytes": 12650,
+      "mode": "100644",
+      "path": "tests/test_dmepos_loader_postgres.py",
+      "sha256": "db7a497bb75bd17920c8f9deafd2fd08eab10b182d0aa5fe061989856e8b26c4"
+    },
+    {
+      "bytes": 11733,
+      "mode": "100644",
+      "path": "tests/test_dmepos_manifest.py",
+      "sha256": "cc388e81fdaaea76ddf52b31520a277589ac978b785832aee91db85790f92896"
+    },
+    {
+      "bytes": 19880,
+      "mode": "100644",
+      "path": "tests/test_dmepos_shortlist.py",
+      "sha256": "d18e3e733c2210c5bb33afd5ea7a225346e9a5edb17ba22d22eed0cdd96a51e2"
+    },
+    {
+      "bytes": 14365,
+      "mode": "100644",
+      "path": "tests/test_dmepos_supplier_screen_sql.py",
+      "sha256": "5b4daa503d6b6422b5f03f20469e158693e34a4fdd0d778f2e4d5869bc25fc3c"
+    },
+    {
+      "bytes": 40373,
+      "mode": "100644",
+      "path": "tests/test_dmepos_supplier_service_analysis_sql.py",
+      "sha256": "aa9569320bc9f906318d6782bca156ead1fa5ee50fe8632ebd21e1ed228cf944"
+    },
+    {
+      "bytes": 2311,
+      "mode": "100644",
+      "path": "tests/test_dmepos_supplier_service_ingestion.py",
+      "sha256": "e8ba505732a7c39d621bf94296215223c83c2fc97e101ce4400965c74f36d218"
+    },
+    {
+      "bytes": 9916,
+      "mode": "100644",
+      "path": "tests/test_dmepos_supplier_service_manifest.py",
+      "sha256": "5e340fcb5d15177cd4491c1abf469c068886b7f6080a5fca33173e71adf89717"
+    },
+    {
+      "bytes": 620,
+      "mode": "100644",
+      "path": "tests/test_first_pass_reporting.py",
+      "sha256": "c265f8dcbf8336e551b2068d00b5c51622ea749eac286d0a071795440915f690"
+    },
+    {
+      "bytes": 1376,
+      "mode": "100644",
+      "path": "tests/test_foundation_catalog.py",
+      "sha256": "628675d8d6a005d5de2c1ca25ee1843a099b4238e9b31fd95c6b9c31a262a89c"
+    },
+    {
+      "bytes": 5600,
+      "mode": "100644",
+      "path": "tests/test_migrations.py",
+      "sha256": "dba8179484524aabe4ad6dbcffabb562c4f1c49a811dc6937df572c9108180f4"
+    },
+    {
+      "bytes": 5162,
+      "mode": "100644",
+      "path": "tests/test_nppes_manifest.py",
+      "sha256": "e815c0c419aa6361179801fd95557d0fa2a8e0238ab2e66e9959c5196bbc04e0"
+    },
+    {
+      "bytes": 6981,
+      "mode": "100644",
+      "path": "tests/test_onboarding_demo.py",
+      "sha256": "e3be3e918dd161a02c8a59c24533fef2ed59301293ed1c9ccc8eb383ee0c867c"
+    },
+    {
+      "bytes": 10139,
+      "mode": "100644",
+      "path": "tests/test_open_payments_analysis_db.py",
+      "sha256": "de56187f4d7a4a86dec7dce063e05619d715c90677dfc8d9861efac8ce0b5a7b"
+    },
+    {
+      "bytes": 9742,
+      "mode": "100644",
+      "path": "tests/test_open_payments_loader_postgres.py",
+      "sha256": "c3d0013cb9bd351bdb0f1b4f6ffd7afe03cf532f7789a9e995b915fbea31c3b9"
+    },
+    {
+      "bytes": 15821,
+      "mode": "100644",
+      "path": "tests/test_open_payments_organization_analysis.py",
+      "sha256": "4b5d4035fb6180b7b659502fadfe34a125fb863f39d057eb09cd605b022ab1bd"
+    },
+    {
+      "bytes": 7296,
+      "mode": "100644",
+      "path": "tests/test_part_b_ingestion.py",
+      "sha256": "988a1eb4baa31b4571622ad1f4f3201cf133dc4bb450460d4f68b47206610f61"
+    },
+    {
+      "bytes": 18962,
+      "mode": "100644",
+      "path": "tests/test_part_b_loader_postgres.py",
+      "sha256": "d85ce6bbe4a50f96fe3f64de83354157132e9637a0785ac7f080fa4d47a53d80"
+    },
+    {
+      "bytes": 16259,
+      "mode": "100644",
+      "path": "tests/test_part_b_multicode_reach.py",
+      "sha256": "15e7b29e6e30a34623050de40dc6338e224754a928339e0d5940910c671e3d54"
+    },
+    {
+      "bytes": 6078,
+      "mode": "100644",
+      "path": "tests/test_part_b_provider_manifest.py",
+      "sha256": "a2741f41f00913db6f58ac5875d71de6194476c1bbe83b777aca64c8ceea8d16"
+    },
+    {
+      "bytes": 6495,
+      "mode": "100644",
+      "path": "tests/test_part_b_provider_service_manifest.py",
+      "sha256": "e28154ddec97fc003c75cca26ee3f3f643081a89f72effe712bd06837f8facda"
+    },
+    {
+      "bytes": 4084,
+      "mode": "100644",
+      "path": "tests/test_part_b_provider_service_scan_sql.py",
+      "sha256": "bbb3129e48bc242a57af4e17f9723446b3f3715139f619b84ff8822aab6f1dcf"
+    },
+    {
+      "bytes": 5154,
+      "mode": "100644",
+      "path": "tests/test_part_b_shortlist.py",
+      "sha256": "b568882f6bbceacf02fb2888af14919a7a08d46f0e07cc44de122e4c7fb4b41f"
+    },
+    {
+      "bytes": 9980,
+      "mode": "100644",
+      "path": "tests/test_public_docs.py",
+      "sha256": "b71d5dc0f5ed464e529db23bfc9af1d3f9a0d702d1f738b0c312391e44412633"
+    },
+    {
+      "bytes": 39191,
+      "mode": "100644",
+      "path": "tests/test_public_release_check.py",
+      "sha256": "55c01ef4a07aa14f3fb8aa59da88d5078cf5b4be6dce5be808ce2e44d3c6d3a9"
+    },
+    {
+      "bytes": 3577,
+      "mode": "100644",
+      "path": "tests/test_source_manifest_schema.py",
+      "sha256": "48b367105e20000e21a08abfbddd6d08f594f4f91091e78f3687ddd58ff24079"
+    },
+    {
+      "bytes": 16543,
+      "mode": "100644",
+      "path": "tests/test_synthetic_workflows.py",
+      "sha256": "3564a2bbe10cdd0d4f3185ae0987ce4ddaaf10e495976fd499c86e09ff60cd0a"
+    },
+    {
+      "bytes": 19471,
+      "mode": "100644",
+      "path": "tests/test_workspace_lifecycle.py",
+      "sha256": "a85fbe374e0831366dd2a6719ab0c1f9ca999444f4e94dd08a91358a3cb64bbc"
+    },
+    {
+      "bytes": 22660,
+      "mode": "100644",
+      "path": "tests/test_workspace_status.py",
+      "sha256": "22e5b271c8a3f42831a2d4927f9818a81a4fcacbff8864ac6137928da42ae5de"
+    },
+    {
+      "bytes": 61598,
+      "mode": "100644",
+      "path": "uv.lock",
+      "sha256": "35d6cb2dca7cbb99ffa643e965792dc00644114da95d251ee0ae5e461b86daea"
+    }
+  ],
+  "schema_version": 1,
+  "source_revision": "drlf-v0.1.0-public-baseline"
+}

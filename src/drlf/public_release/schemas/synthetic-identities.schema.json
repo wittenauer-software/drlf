@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/drlf/public-release-synthetic-identities.schema.json",
+  "title": "Public synthetic identity registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["registry_version", "entries"],
+  "properties": {
+    "registry_version": {"const": 1},
+    "entries": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["value", "type", "purpose", "source_class", "validation_rule"],
+        "properties": {
+          "value": {"type": "string", "minLength": 1, "maxLength": 512},
+          "type": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"},
+          "purpose": {"type": "string", "minLength": 1, "maxLength": 1000},
+          "source_class": {"type": "string", "minLength": 1, "maxLength": 128},
+          "validation_rule": {"type": "string", "minLength": 1, "maxLength": 1000}
+        }
+      }
+    }
+  }
+}

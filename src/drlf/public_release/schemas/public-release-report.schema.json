@@ -1,0 +1,325 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/drlf/public-release-report.schema.json",
+  "title": "Public release checker report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "checker_version",
+    "mode",
+    "subject",
+    "outcome",
+    "policy_id",
+    "policy_version",
+    "policy_sha256",
+    "decisions",
+    "expected_approved_inventory_sha256",
+    "expected_deny_inventory_sha256",
+    "control_bindings_verified",
+    "approved_inventory_id",
+    "approved_inventory_sha256",
+    "deny_inventory_id",
+    "deny_inventory_sha256",
+    "observed_inventory_sha256",
+    "candidate_stable",
+    "clean_state",
+    "history_checked",
+    "archive_inspection",
+    "network_checks",
+    "configured_bounds",
+    "usage",
+    "scope_exclusions",
+    "findings",
+    "human_review_required",
+    "publication_authorized"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "checker_version": {"type": "string"},
+    "mode": {"enum": ["staging-filesystem", "committed-tree"]},
+    "subject": {"type": "object"},
+    "outcome": {"enum": ["pass", "fail", "incomplete"]},
+    "policy_id": {"type": "string"},
+    "policy_version": {"type": "string"},
+    "policy_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "decisions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository_owner",
+        "repository_name",
+        "package_name",
+        "license_spdx",
+        "license_path",
+        "contribution_policy_path",
+        "code_of_conduct_path",
+        "governance_path",
+        "security_path",
+        "support_path",
+        "commit_author_name",
+        "commit_author_email",
+        "commit_committer_name",
+        "commit_committer_email",
+        "approved_public_contacts"
+      ],
+      "properties": {
+        "repository_owner": {"type": "string"},
+        "repository_name": {"type": "string"},
+        "package_name": {"type": "string"},
+        "license_spdx": {"type": "string"},
+        "license_path": {"type": "string"},
+        "contribution_policy_path": {"type": "string"},
+        "code_of_conduct_path": {"type": "string"},
+        "governance_path": {"type": "string"},
+        "security_path": {"type": "string"},
+        "support_path": {"type": "string"},
+        "commit_author_name": {"type": "string"},
+        "commit_author_email": {"type": "string"},
+        "commit_committer_name": {"type": "string"},
+        "commit_committer_email": {"type": "string"},
+        "approved_public_contacts": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "expected_approved_inventory_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "expected_deny_inventory_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "control_bindings_verified": {"const": true},
+    "approved_inventory_id": {"type": "string"},
+    "approved_inventory_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "deny_inventory_id": {"type": "string"},
+    "deny_inventory_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "observed_inventory_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+    "candidate_stable": {"type": "boolean"},
+    "clean_state": {"type": "string"},
+    "history_checked": {"const": false},
+    "archive_inspection": {"const": "disabled-recognized-signatures-rejected"},
+    "network_checks": {"const": "disabled"},
+    "configured_bounds": {"$ref": "#/$defs/configuredBounds"},
+    "usage": {"$ref": "#/$defs/usage"},
+    "scope_exclusions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 32,
+      "items": {"type": "string", "minLength": 1, "maxLength": 2048}
+    },
+    "findings": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["check", "code", "path", "rule_id"],
+        "properties": {
+          "check": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+          },
+          "code": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+          },
+          "path": {
+            "type": ["string", "null"],
+            "minLength": 1,
+            "maxLength": 4096,
+            "pattern": "^[^\\u0000-\\u001f\\u007f]+$"
+          },
+          "rule_id": {
+            "type": ["string", "null"],
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+          }
+        }
+      }
+    },
+    "human_review_required": {"const": true},
+    "publication_authorized": {"const": false}
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"mode": {"const": "committed-tree"}},
+        "required": ["mode"]
+      },
+      "then": {
+        "properties": {
+          "subject": {
+            "oneOf": [
+              {"$ref": "#/$defs/failedCommittedSubject"},
+              {"$ref": "#/$defs/completeCommittedSubject"}
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"mode": {"const": "staging-filesystem"}},
+        "required": ["mode"]
+      },
+      "then": {
+        "properties": {
+          "subject": {"$ref": "#/$defs/stagingSubject"},
+          "usage": {"$ref": "#/$defs/baseUsage"}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "mode": {"const": "committed-tree"},
+          "outcome": {"const": "pass"}
+        },
+        "required": ["mode", "outcome"]
+      },
+      "then": {
+        "properties": {
+          "subject": {"$ref": "#/$defs/completeCommittedSubject"}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"outcome": {"const": "pass"}},
+        "required": ["outcome"]
+      },
+      "then": {
+        "properties": {
+          "candidate_stable": {"const": true},
+          "observed_inventory_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "findings": {"maxItems": 0},
+          "control_bindings_verified": {"const": true}
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "objectId": {
+      "type": "string",
+      "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+    },
+    "stagingSubject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "commit", "tree"],
+      "properties": {
+        "root": {"type": "string", "minLength": 1, "maxLength": 32768},
+        "commit": {"type": "null"},
+        "tree": {"type": "null"}
+      }
+    },
+    "failedCommittedSubject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "commit", "tree"],
+      "properties": {
+        "root": {"type": "string", "minLength": 1, "maxLength": 32768},
+        "commit": {"type": ["string", "null"], "maxLength": 256},
+        "tree": {"type": "null"}
+      }
+    },
+    "completeCommittedSubject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "commit",
+        "tree",
+        "root_commit_required",
+        "approved_parent_count"
+      ],
+      "properties": {
+        "root": {"type": "string", "minLength": 1, "maxLength": 32768},
+        "commit": {"$ref": "#/$defs/objectId"},
+        "tree": {"$ref": "#/$defs/objectId"},
+        "root_commit_required": {"type": "boolean"},
+        "approved_parent_count": {"type": "integer", "minimum": 0, "maximum": 64}
+      }
+    },
+    "configuredBounds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_paths",
+        "max_path_bytes",
+        "max_file_bytes",
+        "max_total_bytes",
+        "max_runtime_seconds",
+        "max_git_output_bytes",
+        "max_git_objects",
+        "max_structured_bytes",
+        "max_deny_rules",
+        "max_findings"
+      ],
+      "properties": {
+        "max_paths": {"type": "integer", "minimum": 1, "maximum": 20000},
+        "max_path_bytes": {"type": "integer", "minimum": 64, "maximum": 4096},
+        "max_file_bytes": {"type": "integer", "minimum": 1, "maximum": 4194304},
+        "max_total_bytes": {"type": "integer", "minimum": 1, "maximum": 33554432},
+        "max_runtime_seconds": {"type": "integer", "minimum": 1, "maximum": 300},
+        "max_git_output_bytes": {"type": "integer", "minimum": 1024, "maximum": 41943040},
+        "max_git_objects": {"type": "integer", "minimum": 1, "maximum": 20000},
+        "max_structured_bytes": {"type": "integer", "minimum": 1, "maximum": 1048576},
+        "max_deny_rules": {"type": "integer", "minimum": 1, "maximum": 5000},
+        "max_findings": {"type": "integer", "minimum": 1, "maximum": 10000}
+      }
+    },
+    "counter": {"type": "integer", "minimum": 0},
+    "baseUsage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "paths",
+        "files",
+        "bytes_read",
+        "verification_bytes_read",
+        "git_objects",
+        "git_output_bytes"
+      ],
+      "properties": {
+        "paths": {"$ref": "#/$defs/counter"},
+        "files": {"$ref": "#/$defs/counter"},
+        "bytes_read": {"$ref": "#/$defs/counter"},
+        "verification_bytes_read": {"$ref": "#/$defs/counter"},
+        "git_objects": {"$ref": "#/$defs/counter"},
+        "git_output_bytes": {"$ref": "#/$defs/counter"}
+      }
+    },
+    "usage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "paths",
+        "files",
+        "bytes_read",
+        "verification_bytes_read",
+        "git_objects",
+        "git_output_bytes"
+      ],
+      "properties": {
+        "paths": {"$ref": "#/$defs/counter"},
+        "files": {"$ref": "#/$defs/counter"},
+        "bytes_read": {"$ref": "#/$defs/counter"},
+        "verification_bytes_read": {"$ref": "#/$defs/counter"},
+        "git_objects": {"$ref": "#/$defs/counter"},
+        "git_output_bytes": {"$ref": "#/$defs/counter"},
+        "worktree_paths": {"$ref": "#/$defs/counter"},
+        "worktree_files": {"$ref": "#/$defs/counter"},
+        "worktree_bytes_read": {"$ref": "#/$defs/counter"},
+        "worktree_verification_bytes_read": {"$ref": "#/$defs/counter"},
+        "worktree_git_objects": {"$ref": "#/$defs/counter"},
+        "worktree_git_output_bytes": {"$ref": "#/$defs/counter"}
+      }
+    }
+  }
+}

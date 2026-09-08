@@ -1,0 +1,4 @@
+interface:
+  display_name: "Investigate Pharmacy Attribution"
+  short_description: "Resolve protocol and pharmacy claim roles"
+  default_prompt: "Use $investigate-pharmacy-protocol-attribution to resolve this Part D attribution pattern."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Investigate Part B Utilization"
+  short_description: "Analyze aligned Part B service patterns"
+  default_prompt: "Use $investigate-part-b-service-utilization to evaluate this Part B service pattern."

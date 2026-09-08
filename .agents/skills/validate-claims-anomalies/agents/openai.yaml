@@ -1,0 +1,4 @@
+interface:
+  display_name: "Validate Claims Anomalies"
+  short_description: "Test whether an aggregate anomaly survives"
+  default_prompt: "Use $validate-claims-anomalies to triage this claims pattern with defensible peers and limits."

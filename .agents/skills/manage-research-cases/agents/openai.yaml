@@ -1,0 +1,4 @@
+interface:
+  display_name: "Manage Research Cases"
+  short_description: "Maintain auditable claims research cases"
+  default_prompt: "Use $manage-research-cases to create or update an auditable research case."

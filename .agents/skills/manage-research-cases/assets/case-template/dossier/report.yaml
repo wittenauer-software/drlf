@@ -1,0 +1,10 @@
+case_id: CASE-NNNN
+report_type: internal-research
+status: draft
+source_commit: null
+generated_at: null
+inputs: []
+output:
+  relative_path: null
+  sha256: null
+transmission_authorized: false
