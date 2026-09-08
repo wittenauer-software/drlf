@@ -5,7 +5,9 @@ from hashlib import sha256
 from pathlib import Path
 
 import pytest
+from typer.testing import CliRunner
 
+from drlf import cli
 from drlf.analysis.dmepos_shortlist import (
     ANONYMOUS_OUTPUT_COLUMNS,
     DEFAULT_MAX_INPUT_BYTES,
@@ -511,3 +513,61 @@ def test_anonymous_reader_revalidates_candidate_run_signature(tmp_path: Path) ->
 
     with pytest.raises(ValueError, match="prospective 2022-2024"):
         read_dmepos_anonymous_candidate_npis(altered)
+
+
+def test_shortlist_cli_honors_explicit_caps_and_preserves_output(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(cli, "require_research_root", lambda *_a, **_kw: "private-system-of-record")
+    rows, _, _ = _candidate_rows()
+    scan = tmp_path / "scan.csv"
+    expected = tmp_path / "expected.csv"
+    actual = tmp_path / "actual.csv"
+    _write_csv(scan, rows, list(SCAN_COLUMNS))
+    generate_dmepos_anonymous_shortlist(
+        scan,
+        expected,
+        max_input_bytes=scan.stat().st_size,
+        max_input_rows=len(rows),
+        max_output_bytes=1024 * 1024,
+        max_output_rows=2,
+    )
+    limits = [
+        "--max-input-bytes",
+        str(scan.stat().st_size),
+        "--max-input-rows",
+        str(len(rows)),
+        "--max-output-bytes",
+        str(1024 * 1024),
+        "--max-output-rows",
+        "2",
+    ]
+    runner = CliRunner()
+    for index in (1, 3, 5, 7):
+        too_small = limits.copy()
+        too_small[index] = "1" if index == 5 else str(int(too_small[index]) - 1)
+        rejected = runner.invoke(
+            cli.app, ["dmepos-anonymous-shortlist", str(scan), str(actual), *too_small]
+        )
+        assert rejected.exit_code == 2, rejected.output
+        assert not actual.exists()
+    accepted = runner.invoke(
+        cli.app, ["dmepos-anonymous-shortlist", str(scan), str(actual), *limits]
+    )
+    assert accepted.exit_code == 0, accepted.output
+    assert actual.read_bytes() == expected.read_bytes()
+    assert "2 DMEPOS candidates (1 persistent, 1 emerging" in accepted.output
+    for invalid in ("0", "-1"):
+        rejected = runner.invoke(
+            cli.app,
+            [
+                "dmepos-anonymous-shortlist",
+                str(scan),
+                str(tmp_path / "invalid.csv"),
+                "--max-input-bytes",
+                invalid,
+            ],
+        )
+        assert rejected.exit_code == 2
+        assert not (tmp_path / "invalid.csv").exists()

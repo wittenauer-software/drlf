@@ -296,10 +296,10 @@
       "sha256": "4c5dbd670ac6e489e382e34e1a7bf07ef2baac4cf5a17d4fe86ec7cb7d28c989"
     },
     {
-      "bytes": 6025,
+      "bytes": 7344,
       "mode": "100644",
       "path": "docs/methods/dmepos-supplier-outliers.md",
-      "sha256": "d87cb6c27504114f56af310380b20aa676d207bc6d7ea65e05aea089903c301a"
+      "sha256": "caed360bd9a68ea5627598fd2c6c324ff078eb4f306e7b960f66ede34d90c13e"
     },
     {
       "bytes": 7398,
@@ -644,10 +644,10 @@
       "sha256": "65e463a4a5f579e2b3e04db1dbba2ce0b912d1c196947c2286f59392dbc7bde7"
     },
     {
-      "bytes": 90240,
+      "bytes": 91171,
       "mode": "100644",
       "path": "src/drlf/cli.py",
-      "sha256": "f6cb36b73b092ba71d177443ea3227b0a8c805588de629e33c8007076a7d1c64"
+      "sha256": "49bb00e627e206cc89998418b4174102be7a52863029b9995ca2281c04b7b051"
     },
     {
       "bytes": 489,
@@ -1010,10 +1010,10 @@
       "sha256": "cc388e81fdaaea76ddf52b31520a277589ac978b785832aee91db85790f92896"
     },
     {
-      "bytes": 19880,
+      "bytes": 21923,
       "mode": "100644",
       "path": "tests/test_dmepos_shortlist.py",
-      "sha256": "d18e3e733c2210c5bb33afd5ea7a225346e9a5edb17ba22d22eed0cdd96a51e2"
+      "sha256": "b735487fd0b98fb20f780c51b0eb07fc931a52dd4a6ff0c565b276b26532efba"
     },
     {
       "bytes": 14365,

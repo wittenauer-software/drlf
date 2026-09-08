@@ -87,3 +87,25 @@ suppression and policy explanations before extending identity or enrollment rese
 Continue only when a bounded lawful public action can distinguish explanations and change disposition.
 Otherwise record the cutoff, unresolved roles, required nonpublic evidence and precise revisit trigger.
 The [common method contract](README.md) and public foundations govern evidence and learning discipline.
+
+
+## Bounded anonymous shortlist handoff
+
+The full screen CSV can exceed the shortlist reader's default 64 MiB input cap even when the
+candidate table is small. Check the complete file size and the reviewed resource envelope before
+running the handoff. The CLI accepts positive `--max-input-bytes`, `--max-input-rows`,
+`--max-output-bytes`, and `--max-output-rows` limits; defaults remain 64 MiB, 100,000 data rows,
+16 MiB, and 10,000 candidate rows respectively. There is no unlimited mode.
+
+For a previously reviewed input no larger than 128 MiB, for example:
+
+```text
+drlf dmepos-anonymous-shortlist data/derived/anonymous-screen.csv data/derived/anonymous-shortlist.csv --max-input-bytes 134217728 --max-input-rows 100000 --max-output-bytes 16777216 --max-output-rows 10000
+```
+
+Use the complete upstream output and preserve its registered path and hash. Do not truncate or
+prefilter the input to fit the cap: noncandidate rows also participate in contract validation.
+An explicit limit changes the permitted resource envelope and recorded cap metadata, while preserving
+peer groups, thresholds and candidate selection. Equal inputs and caps produce deterministic output.
+Keep generated CSVs in an ignored output directory;
+the private workspace gate requires a clean tracked baseline before each analysis command.

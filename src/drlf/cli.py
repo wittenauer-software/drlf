@@ -7,6 +7,7 @@ from typing import Annotated, cast
 
 import typer
 
+from drlf.analysis import dmepos_shortlist as dmepos_shortlist_analysis
 from drlf.analysis.dmepos_code_freeze import (
     DEFAULT_MAX_INPUT_BYTES as DEFAULT_DMEPOS_CODE_FREEZE_INPUT_BYTES,
 )
@@ -1873,12 +1874,28 @@ def dmepos_anonymous_shortlist(
         Path,
         typer.Argument(help="New deterministic anonymous candidate shortlist CSV"),
     ],
+    max_input_bytes: Annotated[
+        int, typer.Option(min=1, help="Maximum complete screen CSV size in bytes")
+    ] = dmepos_shortlist_analysis.DEFAULT_MAX_INPUT_BYTES,
+    max_input_rows: Annotated[
+        int, typer.Option(min=1, help="Maximum complete screen data rows")
+    ] = dmepos_shortlist_analysis.DEFAULT_MAX_INPUT_ROWS,
+    max_output_bytes: Annotated[
+        int, typer.Option(min=1, help="Maximum anonymous shortlist size in bytes")
+    ] = dmepos_shortlist_analysis.DEFAULT_MAX_OUTPUT_BYTES,
+    max_output_rows: Annotated[
+        int, typer.Option(min=1, help="Maximum anonymous candidate rows")
+    ] = dmepos_shortlist_analysis.DEFAULT_MAX_OUTPUT_ROWS,
 ) -> None:
     """Freeze mechanically selected NPIs before any identity lookup."""
     try:
         selected, persistent, emerging, artifact_hash = generate_dmepos_anonymous_shortlist(
             input_path,
             output_path,
+            max_input_bytes=max_input_bytes,
+            max_input_rows=max_input_rows,
+            max_output_bytes=max_output_bytes,
+            max_output_rows=max_output_rows,
         )
     except (ValueError, FileExistsError) as error:
         raise typer.BadParameter(str(error)) from error
